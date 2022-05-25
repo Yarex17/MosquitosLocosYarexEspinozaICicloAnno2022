@@ -1,4 +1,4 @@
-package Domain;
+package Domain.Enemigo;
 
 public class Mosquito {
 

@@ -6,23 +6,27 @@ import java.awt.event.ActionListener;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 
-public class JFVentanaPrincipal extends JFrame implements ActionListener{
+public class JFVentanaPrincipal extends JFrame {
 	
-	
-	
+	JPAeaDeJuego jpAeaDeJuego;
+	JPLogin jifLogin ;
 	public JFVentanaPrincipal() {
-		this.setSize(800, 600);
+		this.setSize(816,639);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setResizable(false);
-		init();
-	}
-	private void init() {
-		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		this.jpAeaDeJuego = new JPAeaDeJuego();
+		this.jifLogin =new JPLogin();
+		this.add(jifLogin);
+		this.add(jpAeaDeJuego);
 		
+	
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+//	public void cambioEscena(){
+//		if(!jpAeaDeJuego.cambio()) {
+//			this.jifLogin.setVisible(false);
+//		}
+//			
+//		
+//	}
 }

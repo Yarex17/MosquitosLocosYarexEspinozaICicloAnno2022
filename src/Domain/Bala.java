@@ -3,10 +3,10 @@ package Domain;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Balas {
+public class Bala {
 	private double posX;
 	private double posY;
-	public Balas(double posX, double posY) {
+	public Bala(double posX, double posY) {
 
 		this.posX = posX;
 		this.posY = posY;

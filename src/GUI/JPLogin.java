@@ -29,14 +29,18 @@ public class JPLogin extends JPanel implements ActionListener{
 	private JTable jtbJugadores;
 	private DefaultTableModel dtmJugadores;
 	
+	
 public JPLogin() {
 	this.setLayout(null);
 	this.setBounds(0, 0, 800, 600);
 ;
     this.setBorder(null);
 	this.setVisible(true);
-	cargarTabla();
+	
 	init();
+	
+	cargarTabla();
+	
 }
 private void init() {
 	this.setLayout(null);
@@ -64,9 +68,11 @@ private void init() {
 	 this.jbIniciar.addActionListener(this);
 	 this.add(jbIniciar);
 	
-	this.dtmJugadores=new DefaultTableModel();
-	this.jtbJugadores=new JTable(this.dtmJugadores);
+	 this.dtmJugadores=new DefaultTableModel();
+		
+		this.jtbJugadores=new JTable(this.dtmJugadores);
 	this.jtbJugadores.setBounds(200, 300, 270, 250);
+	
 	JScrollPane jscrollPane=new JScrollPane(this.jtbJugadores);
 	jscrollPane.setBounds(250, 250, 270, 250);
 	this.add(jscrollPane);
@@ -84,8 +90,8 @@ public void cargarTabla() {
 	try {
 		JugadorBusiness jugadorBusiness=new JugadorBusiness();
 		jugadorBusiness.guardarJugador(new Jugador("Carlos", 540));
-		//this.dtmJugadores.addColumn("Nombre");
-		//this.dtmJugadores.addColumn("Puntos");
+		this.dtmJugadores.addColumn("Nombre");
+		this.dtmJugadores.addColumn("Puntos");
 		
 		
 		List<Jugador> jugadores;

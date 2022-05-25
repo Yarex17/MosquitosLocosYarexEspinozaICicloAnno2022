@@ -12,16 +12,13 @@ import java.util.List;
 
 import Domain.Jugador;
 
-import Utility.Rutas;
-
-
 public class JugadorData {
 	private String ruta;
 public JugadorData() {
 	this.ruta="prueba.dat";
 
 }
-public void guardarJugador(Jugador jugador) throws FileNotFoundException, IOException, ClassNotFoundException {
+public void guardarJugador(Jugador jugador) throws ClassNotFoundException, IOException {
 	File file=new File(this.ruta);	
 	List<Jugador> jugadores=new ArrayList<Jugador>();
 	if(file.exists()) {

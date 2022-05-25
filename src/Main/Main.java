@@ -1,9 +1,12 @@
 package Main;
 
+import GUI.JFVentanaPrincipal;
+
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		JFVentanaPrincipal jfVentanaPrincipal =new JFVentanaPrincipal();
+		jfVentanaPrincipal.setVisible(true);
 
 	}
 

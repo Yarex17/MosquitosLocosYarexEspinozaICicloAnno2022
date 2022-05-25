@@ -17,6 +17,12 @@ public class Personaje {
 		this.vida=100;
 		this.cantidaBalas=10;
 	} // constructor
+	public Bala disparar(int posX,int posY) {
+		if(this.cantidaBalas>0) {
+			this.cantidaBalas=this.cantidaBalas-1;
+			return new Bala(this.posX, this.posY)
+		}
+	}
 	
 	public Personaje(int posX, int posY) {
 		this.posX=posX;

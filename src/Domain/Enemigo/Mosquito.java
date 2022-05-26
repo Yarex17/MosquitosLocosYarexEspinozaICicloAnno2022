@@ -1,6 +1,6 @@
 package Domain.Enemigo;
 
-public class Mosquito {
+public  abstract class Mosquito {
 	protected double posX, posY;
 
 	

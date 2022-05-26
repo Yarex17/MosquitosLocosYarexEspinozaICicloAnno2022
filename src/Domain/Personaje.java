@@ -1,6 +1,7 @@
 package Domain;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class Personaje {
@@ -20,8 +21,9 @@ public class Personaje {
 	public Bala disparar(int posX,int posY) {
 		if(this.cantidaBalas>0) {
 			this.cantidaBalas=this.cantidaBalas-1;
-			return new Bala(this.posX, this.posY)
+			return new Bala(this.posX+15, this.posY+15,posX,posY);
 		}
+		return null;
 	}
 	
 	public Personaje(int posX, int posY) {
@@ -31,19 +33,21 @@ public class Personaje {
 		this.cantidaBalas=10;
 	} // constructor	
 	
-//	public Bala disparar() {
-//		if(this.cantidaBalas>0) {
-//			this.cantidaBalas=this.cantidaBalas-1;
-//			return new Bala(this.posX+40, this.posY+15);
-//		}
-//		return null;
-//	} // disparar
+	public Bala disparar() {
+		if(this.cantidaBalas>0) {
+			this.cantidaBalas=this.cantidaBalas-1;
+			return new Bala(this.posX+15, this.posY+15,posX,posY);
+		}
+		return null;
+	} // disparar
 
 	public void dibujar(Graphics g) {
 		g.setColor(new Color(221, 27, 18));
 		g.fillOval(this.posX, this.posY, 40, 40);
 		g.setColor(Color.white);
-		g.drawString(this.vida+"", this.posX+10, this.posY+25);
+        g.setFont(new Font("Times New Roman", Font.BOLD, 15));
+        g.drawString("Vida:"+this.vida+"",5, 20);
+		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
 	} // dibujar
 	
 	public void atacar() {}

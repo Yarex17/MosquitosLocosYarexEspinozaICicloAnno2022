@@ -8,65 +8,70 @@ import javax.swing.text.html.parser.Entity;
 import Domain.Enemigo.Mosquito;
 
 public class Bala {
-	private double posXOrigen;
-	private double posYOrigen;
+	private double inicioX, inicioY, finalX, finalY, pendiente, recta, velocidadDesplasamiento,rango;
+	public Bala(double inicioX, double inicioY, double finalX, double finalY) {
+		this.velocidadDesplasamiento = 2;
+		this.rango=50000.00;
+		this.inicioX = inicioX;
+		this.inicioY = inicioY;
+		this.finalX = finalX;
+		this.finalY = finalY;
+		this.pendiente = (this.finalY - this.inicioY) / (this.finalX - this.inicioX);
+		
+		this.recta = (this.inicioY - (this.pendiente * this.inicioX));
 	
-	private double posXFinal;
-	private double posYFinal;
-	
-	private double pendiente;
-	private double recta;
-	private double velocidad;
-	
-	public Bala(double posXOriguen, double posYOriguen,double posXFinal,double posYFinal) {
-
-		this.posXOrigen = posXOriguen;
-		this.posYOrigen = posYOriguen;
-		this.posXFinal=posXFinal;
-		this.posYFinal=posXFinal;
-		this.pendiente=(this.posYFinal-this.posYOrigen)/(this.posXFinal-this.posXOrigen);
-		this.recta=(this.posYOrigen-(this.pendiente*this.posXOrigen));
-		this.velocidad=2;
 	}
 	public boolean collision(Mosquito mosquito) {
 
-		if (((this.posXOrigen <= mosquito.getPosX() + 40) && (this.posXOrigen >= mosquito.getPosX()))
-				&& ((this.posYOrigen <= mosquito.getPosY() + 40) && (this.posYOrigen >= mosquito.getPosY()))) {
+		if (((this.inicioX <= mosquito.getPosX() + 40) && (this.inicioX >= mosquito.getPosX()))
+				&& ((this.inicioY <= mosquito.getPosY() + 40) && (this.inicioY >= mosquito.getPosY()))) {
 			return true;
 		}
 		return false;
 	} // collision
 	public void mover() {
 
-		this.posYOrigen = pendiente * this.posXOrigen + recta;
+	this.inicioY = pendiente * this.inicioX + recta;
 
-		if (this.posXOrigen >= this.posXFinal) {
-			this.posXOrigen -= this.velocidad;
-			this.posXFinal -= this.velocidad;
-		}
-		if (this.posXOrigen <= this.posXFinal) {
-			this.posXOrigen += this.velocidad;
-			this.posXFinal += this.velocidad;
-		}
+	if (this.inicioX >= this.finalX) {
+		this.inicioX -= this.velocidadDesplasamiento;
+		this.finalX -= this.velocidadDesplasamiento;
+	}
+	if (this.inicioX <= this.finalX) {
+		this.inicioX += this.velocidadDesplasamiento;
+		this.finalX += this.velocidadDesplasamiento;
+	}
+
+		
 
 	} // move
-
-
+public boolean Rango(Mosquito mosquito) {
+	double rango=((mosquito.getPosX()-this.inicioX)*(mosquito.getPosX()-this.inicioX)) + ((mosquito.getPosY()-this.inicioY)*(mosquito.getPosY()-this.inicioY)) ;
+	if (rango<=this.rango) {
+		return true;
+	}else {
+		return false;
+	}
+	
+}
 	public void dibujar(Graphics g) {
-		g.setColor(Color.yellow);
-		g.fillOval((int)this.posXOrigen,(int)this.posYOrigen, 10, 10);
+		g.setColor(Color.WHITE);
+		g.fillOval((int) this.inicioX, (int) this.inicioY, 10, 10);
 	}
-	public double getPosXOrigen() {
-		return posXOrigen;
+	public double getPosX() {
+		return inicioX;
 	}
-	public void setPosXOrigen(double posXOrigen) {
-		this.posXOrigen = posXOrigen;
+
+	public void setPosX(double posX) {
+		this.inicioX = posX;
 	}
-	public double getPosYOrigen() {
-		return posYOrigen;
+
+	public double getPosY() {
+		return inicioY;
 	}
-	public void setPosYOrigen(double posYOrigen) {
-		this.posYOrigen = posYOrigen;
+
+	public void setPosY(double posY) {
+		this.inicioY = posY;
 	}
 	
 	

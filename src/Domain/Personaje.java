@@ -3,6 +3,12 @@ package Domain;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import Domain.Enemigo.Mosquito;
 
 public class Personaje {
 
@@ -11,13 +17,25 @@ public class Personaje {
 	private int vida;
 	
 	private int cantidaBalas;
+	private double rango;
+	private BufferedImage imagen;
 	
-	public Personaje() {
-		this.posX=0;
-		this.posY=0;
+	public Personaje(int posX, int posY) {
+		this.posX=posX;
+		this.posY=posY;
 		this.vida=100;
 		this.cantidaBalas=10;
-	} // constructor
+		this.rango=20000.00;
+		try {
+			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
+			
+			//https://www.flaticon.es/icono-premium/exterminador_4295657?term=exterminador&page=1&position=12&page=1&position=12&related_id=4295657&origin=search		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // constructor	
+	
 	public Bala disparar(int posX,int posY) {
 		if(this.cantidaBalas>0) {
 			this.cantidaBalas=this.cantidaBalas-1;
@@ -26,12 +44,7 @@ public class Personaje {
 		return null;
 	}
 	
-	public Personaje(int posX, int posY) {
-		this.posX=posX;
-		this.posY=posY;
-		this.vida=100;
-		this.cantidaBalas=10;
-	} // constructor	
+	
 	
 	public Bala disparar() {
 		if(this.cantidaBalas>0) {
@@ -40,11 +53,23 @@ public class Personaje {
 		}
 		return null;
 	} // disparar
-
+	public boolean Rango(Mosquito mosquito) {
+		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
+				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
+		if (rango<=this.rango) {
+			
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	public void dibujar(Graphics g) {
-		g.setColor(new Color(221, 27, 18));
-		g.fillOval(this.posX, this.posY, 40, 40);
+		
+		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 		g.setColor(Color.white);
+        g.drawOval(this.posX-20, this.posY-20, 100, 100);
+		
         g.setFont(new Font("Times New Roman", Font.BOLD, 15));
         g.drawString("Vida:"+this.vida+"",5, 20);
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);

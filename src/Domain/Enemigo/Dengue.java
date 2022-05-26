@@ -18,10 +18,6 @@ public class Dengue extends Mosquito{
 		
 	}
 
-	@Override
-	void movimiento() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

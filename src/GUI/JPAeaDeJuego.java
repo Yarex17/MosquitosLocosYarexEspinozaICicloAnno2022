@@ -52,6 +52,7 @@ public void addNotify() {
 private void drawToScreen() {
 	Graphics g=this.getGraphics();
 	g.drawImage(this.buffer, 0, 0, 800, 600, null);
+	g.setColor(Color.LIGHT_GRAY);
 	g.dispose();
 }
 private void init() {

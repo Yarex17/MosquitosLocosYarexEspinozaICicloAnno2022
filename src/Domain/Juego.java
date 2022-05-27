@@ -15,13 +15,14 @@ public class Juego {
 private Criadero criadero;
 	public Juego() {
 		
-		this.personaje = new Personaje(300, 300);
+		
 		this.balas = new ArrayList<Bala>();
 		this.mosquitos=new ArrayList<Mosquito>();
         this.mosquitos.add(new Dengue(200, 300));
         this.mosquitos.add(new Dengue(400, 300));
          this.criadero=new Balde();
      	this.mosquitos.add(this.criadero.generaMosquitos());
+     	this.personaje = new Personaje(300, 300);
 	}
 
 	public void actualizar() {
@@ -30,7 +31,7 @@ private Criadero criadero;
 			for (int j = 0; j < mosquitos.size(); j++) {
 				if (this.balas.get(i).colision(mosquitos.get(j))){
 					this.mosquitos.remove(j);
-					this.balas.remove(i);
+					//this.balas.remove(i);
 				}
 			}
 			}

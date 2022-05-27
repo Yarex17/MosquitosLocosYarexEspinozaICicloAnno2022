@@ -19,11 +19,11 @@ private ArrayList<Edificacion> edificacions;
 		super(nivel);
 		this.edificacions=new ArrayList<Edificacion>();
 		Ciudad.criaderos=new ArrayList<Criadero>();
-		///this.mosquitos=new ArrayList<Mosquito>();
+		this.mosquitos=new ArrayList<Mosquito>();
         this.mosquitos.add(new Dengue(200, 300));
         this.mosquitos.add(new Zika(400, 300));
 		generarEdificaciones();
-		generarCriadero();
+		//generarCriadero();
 	}
 	public void generarEdificaciones() {
 		for (int i = 0; i < 3; i++) {

@@ -11,7 +11,7 @@ public  abstract class Ciudad {
 	protected static ArrayList<Criadero> criaderos;
 	public static ArrayList<Mosquito> mosquitos;
 public Ciudad(int nivel) {
-	Ciudad.nivel=1;
+	Ciudad.nivel=2;
 	Ciudad.criaderos= new ArrayList<Criadero> ();
 	Ciudad.mosquitos=new ArrayList<Mosquito>();
 }

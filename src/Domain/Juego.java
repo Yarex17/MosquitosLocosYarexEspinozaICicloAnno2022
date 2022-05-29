@@ -22,7 +22,7 @@ public class Juego {
      	this.personaje = new Personaje(300, 300);
 	}
 public void subirNivel() {
-	if (getNivel()<3&&this.ciudad.getCuadra().getCriaderos().size()==0&&this.ciudad.getCuadra().getPuertas().get(1).==0) {
+	if (getNivel()<3&&this.ciudad.getCuadra().getCriaderos().size()==0/*&&this.ciudad.getCuadra().getPuertas().get(1).==0*/) {
 		setNivel(getNivel()+1);
 	}
 }

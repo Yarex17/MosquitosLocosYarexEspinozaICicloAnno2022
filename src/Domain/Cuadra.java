@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import Domain.Criadero.Criadero;
+import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
 public  class Cuadra {
@@ -17,6 +18,7 @@ private ArrayList<Mosquito> mosquitos;
 		this.puertas=new ArrayList<Puerta>();
 		this.criaderos=new ArrayList<Criadero>();
 		this.mosquitos=new ArrayList<Mosquito>();
+		this.mosquitos.add(new Dengue(300, 200));
         generarEntradas();
         generarCriadero();
 
@@ -58,10 +60,20 @@ private ArrayList<Mosquito> mosquitos;
 			this.criaderos.get(i).dibujar(g);
 		
 		}
+		for (int i = 0; i < this.mosquitos.size(); i++) {
+			this.mosquitos.get(i).dibujar(g);
+		
+		}
 		for (int i = 0; i < puertas.size(); i++) {
 			this.puertas.get(i).dibujar(g);
 		}
 		
+	}
+	public ArrayList<Puerta> getPuertas() {
+		return puertas;
+	}
+	public void setPuertas(ArrayList<Puerta> puertas) {
+		this.puertas = puertas;
 	}
 	public ArrayList<Criadero> getCriaderos() {
 		return criaderos;

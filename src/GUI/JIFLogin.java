@@ -97,7 +97,7 @@ public class JIFLogin extends JPanel implements ActionListener {
 
 			this.dtmJugadores.addColumn("Nombre");
 			this.dtmJugadores.addColumn("Puntos");
-
+jugadorBusiness.guardarJugador(new Jugador("Pedro", 100));
 			List<Jugador> jugadores;
 			jugadores = jugadorBusiness.obtenerJugador();
 			for (int i = 0; i < jugadores.size(); i++) {

@@ -3,45 +3,42 @@ package Domain;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import Domain.Criadero.Criadero;
-import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
-import Domain.Enemigo.Zika;
 
-public class Cuadra extends Ciudad {
-private ArrayList<Edificacion> edificacions;
-//private ArrayList<Criadero> criaderos;
-//private ArrayList<Mosquito> mosquitos;
+public  class Cuadra {
+	
+private ArrayList<Puerta> puertas;
+private ArrayList<Criadero> criaderos;
+private ArrayList<Mosquito> mosquitos;
 	
 	public Cuadra() {
-		super(nivel);
-		this.edificacions=new ArrayList<Edificacion>();
-		Ciudad.criaderos=new ArrayList<Criadero>();
+		super();
+		this.puertas=new ArrayList<Puerta>();
+		this.criaderos=new ArrayList<Criadero>();
 		this.mosquitos=new ArrayList<Mosquito>();
-        this.mosquitos.add(new Dengue(200, 300));
-        this.mosquitos.add(new Zika(400, 300));
-		generarEdificaciones();
-		//generarCriadero();
+        generarEntradas();
+        generarCriadero();
+
 	}
-	public void generarEdificaciones() {
+	public void generarEntradas() {
 		for (int i = 0; i < 3; i++) {
-			this.edificacions.add(new Edificacion(40*i, 40*i));
+			this.puertas.add(new Puerta());
 		}
 	}
-	@Override
+	
 	public void generarCriadero() {
 	for (int i = 0; i < 3; i++) {
-		Ciudad.criaderos.add(FabricaCriaderos.crearCriaderoInterno(i+1));
+		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno(i+1));
 		//Ciudad.mosquitos.add(Ciudad.criaderos.get(i).generaMosquitos());
 	}
 		
 	}
 
-	@Override
+
 	public void dibujar(Graphics g) {
-		switch (Ciudad.nivel) {
+	
+		switch (1) {
 		case 1:
 			g.setColor(Color.RED);
 			break;
@@ -55,18 +52,30 @@ private ArrayList<Edificacion> edificacions;
 		default:
 			break;
 		}
+		//System.out.println(entradas.size());
 		g.fillRect(0,0, 800, 600);
+		for (int i = 0; i < this.criaderos.size(); i++) {
+			this.criaderos.get(i).dibujar(g);
 		
-		for (int i = 0; i < 3; i++) {
-			Ciudad.criaderos.get(i).dibujar(g);
+		}
+		for (int i = 0; i < puertas.size(); i++) {
+			this.puertas.get(i).dibujar(g);
+		}
 		
-		}
-		for (int i = 0; i < 3; i++) {
-			this.edificacions.get(i).dibujar(g);
-		}
-		for (int i = 0; i < criaderos.size(); i++) {
-			
-		}
 	}
+	public ArrayList<Criadero> getCriaderos() {
+		return criaderos;
+	}
+	public void setCriaderos(ArrayList<Criadero> criaderos) {
+		this.criaderos = criaderos;
+	}
+	public ArrayList<Mosquito> getMosquitos() {
+		return mosquitos;
+	}
+	public void setMosquitos(ArrayList<Mosquito> mosquitos) {
+		this.mosquitos = mosquitos;
+	}
+	
+	
 
 }

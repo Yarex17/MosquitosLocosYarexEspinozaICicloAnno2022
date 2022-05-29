@@ -7,7 +7,7 @@ import Domain.Enemigo.Chikungunya;
 import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
-public class Llantas extends Criadero{
+public class Llanta extends Criadero{
 
 	@Override
 	public Mosquito generaMosquitos() {

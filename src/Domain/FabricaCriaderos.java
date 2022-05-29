@@ -1,11 +1,11 @@
 package Domain;
 
 import Domain.Criadero.Balde;
-import Domain.Criadero.Canoas;
+import Domain.Criadero.Canoa;
 import Domain.Criadero.Chatarra;
 import Domain.Criadero.Criadero;
 import Domain.Criadero.Florero;
-import Domain.Criadero.Llantas;
+import Domain.Criadero.Llanta;
 import Domain.Criadero.PlatoMaceta;
 
 public class FabricaCriaderos {
@@ -29,9 +29,9 @@ default:
 public static Criadero crearCriaderoExterno(int e) {
 switch (e) {
 case 1:
-	return new Llantas();
+	return new Llanta();
 case 2:
-	return new Canoas();
+	return new Canoa();
 case 3:
 	return new Chatarra();
 	

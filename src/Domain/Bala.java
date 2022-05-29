@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.text.html.parser.Entity;
 
+import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
 
 public class Bala {
@@ -36,6 +37,14 @@ public class Bala {
 
 		if (((this.inicioX <= mosquito.getPosX() + 20) && (this.inicioX >= mosquito.getPosX()))
 				&& ((this.inicioY <= mosquito.getPosY() + 20) && (this.inicioY >= mosquito.getPosY()))) {
+			return true;
+		}
+		return false;
+	} // colision
+	public boolean colision(Criadero criadero) {
+
+		if (((this.inicioX <= criadero.getPosX() + 20) && (this.inicioX >= criadero.getPosX()))
+				&& ((this.inicioY <= criadero.getPosY() + 20) && (this.inicioY >= criadero.getPosY()))) {
 			return true;
 		}
 		return false;

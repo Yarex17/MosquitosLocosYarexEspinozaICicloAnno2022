@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
 
 public class Personaje {
@@ -43,9 +44,16 @@ public class Personaje {
 		}
 		return null;
 	}
-	
-	
-	
+	public boolean colision(int x,int y){
+if (((this.posX < x+ 40 && this.posX >= x)
+				|| (this.posX + 40 > x && this.posX <= x))
+				&& (this.posY < y + 40 && this.posY >= y
+						|| (this.posY + 40 > y && this.posY <= y))) {
+	return true;
+}else {
+	return false;
+}
+	}
 	public Bala disparar() {
 		if(this.cantidaBalas>0) {
 			this.cantidaBalas=this.cantidaBalas-1;
@@ -56,6 +64,17 @@ public class Personaje {
 	public boolean Rango(Mosquito mosquito) {
 		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
 				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
+		if (rango<=this.rango) {
+			
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	public boolean Rango(Criadero criadero) {
+		double rango=((criadero.getPosX()-this.posX)*(criadero.getPosX()-this.posX)) 
+				+ ((criadero.getPosY()-this.posY)*(criadero.getPosY()-this.posY)) ;
 		if (rango<=this.rango) {
 			
 			return true;

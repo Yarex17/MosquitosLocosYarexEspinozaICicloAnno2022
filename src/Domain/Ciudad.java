@@ -1,23 +1,28 @@
 package Domain;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
 
-import Domain.Criadero.Criadero;
-import Domain.Enemigo.Mosquito;
 
-public  abstract class Ciudad {
-	protected static int nivel;
-	protected static ArrayList<Criadero> criaderos;
-	public static ArrayList<Mosquito> mosquitos;
-public Ciudad(int nivel) {
-	Ciudad.nivel=2;
-	Ciudad.criaderos= new ArrayList<Criadero> ();
-	Ciudad.mosquitos=new ArrayList<Mosquito>();
+public   class Ciudad {
+	
+	private Cuadra cuadra;
+	
+public Ciudad() {
+	this.cuadra = new Cuadra();
 }
 
+public  void generarCriadero() {
+}
+public  void dibujar(Graphics g) {
+	cuadra.dibujar(g);
+}
 
-public abstract void generarCriadero();
-public abstract void dibujar(Graphics g) ;
+public Cuadra getCuadra() {
+	return cuadra;
+}
+
+public void setCuadra(Cuadra cuadra) {
+	this.cuadra = cuadra;
+}
 
 }

@@ -63,8 +63,8 @@ private void update() {
 	this.juego.actualizar();
 }
 private void draw() {
-	this.graphics2d.setColor(new Color(39, 177, 30));
-	this.graphics2d.fillRect(0, 0, 800, 600);
+	//this.graphics2d.setColor(new Color(39, 177, 30));
+	//this.graphics2d.fillRect(0, 0, 800, 600);
 	this.juego.dibujar(this.graphics2d);
 } // draw
 

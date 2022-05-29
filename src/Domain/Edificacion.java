@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
 
-public class Edificacion extends Ciudad{
+public class Edificacion  {
 	private double posY,posX;
-	//private ArrayList<Criadero> criaderos;
+	private ArrayList<Criadero> criaderos;
 
-	public Edificacion(double posY, double posX) {
-	super(nivel);
-		this.posY = posY;
-		this.posX = posX;
+	public Edificacion() {
+	super();
+		this.posY = 0;
+		this.posX = 0;
 		criaderos=new ArrayList<Criadero>(); 
 		generarCriadero();
 	
@@ -22,8 +22,14 @@ public class Edificacion extends Ciudad{
 
 
 public void dibujar(Graphics g) {
-	g.setColor(Color.BLACK);
-	g.fillRect((int)this.posX, (int)this.posY, 40, 40);
+	
+		//g.setColor(Color.BLACK);
+		g.fillRect((int)this.posX, (int)this.posY, 800, 600);
+		
+		for (int i = 0; i < criaderos.size(); i++) {
+			criaderos.get(i).dibujar(g);
+		
+	}
 }
 
 	public double getPosY() {
@@ -41,10 +47,13 @@ public void dibujar(Graphics g) {
 	public void setPosX(double posX) {
 		this.posX = posX;
 	}
-	@Override
+
 	public void generarCriadero() {
-		for (int i = 0; i < 3; i++) {
-			criaderos.add(FabricaCriaderos.crearCriaderoInterno(i+1));
+		for (int i = 0; i < 2; i++) {
+			if (criaderos.size()<=5) {
+				criaderos.add(FabricaCriaderos.crearCriaderoInterno(i+1));
+
+			}
 			}
 		
 	}

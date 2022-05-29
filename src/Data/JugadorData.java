@@ -15,7 +15,7 @@ import Domain.Jugador;
 public class JugadorData {
 	private String ruta;
 public JugadorData() {
-	this.ruta="prueba.dat";
+	this.ruta="RankingJudadores.dat";
 
 }
 public void guardarJugador(Jugador jugador) throws ClassNotFoundException, IOException {

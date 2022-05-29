@@ -6,10 +6,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Domain.Personaje;
+
 public  abstract class Mosquito {
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean genero;
+	protected int contidadPicaduras;
 	protected BufferedImage imagenMosquito;
 	
 	
@@ -26,7 +29,7 @@ public  abstract class Mosquito {
 			e.printStackTrace();
 		}
 	}
- abstract void daño();
+ abstract void daño(boolean colision,Personaje personaje);
  abstract void efecto();
  public  void movimiento() {
 	 this.posY += 1 * this.direccion;
@@ -70,5 +73,12 @@ public void setGenero(boolean genero) {
 	public void setPosY(double posY) {
 		this.posY = posY;
 	}
+	public int getContidadPicaduras() {
+		return contidadPicaduras;
+	}
+	public void setContidadPicaduras(int contidadPicaduras) {
+		this.contidadPicaduras = contidadPicaduras;
+	}
+	
 	
 }

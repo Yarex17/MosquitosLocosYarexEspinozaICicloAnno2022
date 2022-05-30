@@ -43,8 +43,8 @@ public class Bala {
 	} // colision
 	public boolean colision(Criadero criadero) {
 
-		if (((this.inicioX <= criadero.getPosX() + 20) && (this.inicioX >= criadero.getPosX()))
-				&& ((this.inicioY <= criadero.getPosY() + 20) && (this.inicioY >= criadero.getPosY()))) {
+		if (((this.inicioX <= criadero.getPosX() + 40) && (this.inicioX >= criadero.getPosX()))
+				&& ((this.inicioY <= criadero.getPosY() + 40) && (this.inicioY >= criadero.getPosY()))) {
 			return true;
 		}
 		return false;

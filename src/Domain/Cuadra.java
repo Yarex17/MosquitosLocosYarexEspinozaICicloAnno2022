@@ -32,7 +32,6 @@ private ArrayList<Mosquito> mosquitos;
 	public void generarCriadero() {
 	for (int i = 0; i < 3; i++) {
 		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno(i+1));
-		//Ciudad.mosquitos.add(Ciudad.criaderos.get(i).generaMosquitos());
 	}
 		
 	}
@@ -64,8 +63,33 @@ private ArrayList<Mosquito> mosquitos;
 			this.mosquitos.get(i).dibujar(g);
 		
 		}
+		int validad=-1;
 		for (int i = 0; i < puertas.size(); i++) {
-			this.puertas.get(i).dibujar(g);
+			
+					if (this.puertas.get(i).isEntra()&&!this.puertas.get(i).isSale()) {
+						validad=i;
+					}else {
+						
+					}
+					if (validad==-1&&!this.puertas.get(i).isEntra()&&this.puertas.get(i).isSale()) {
+						this.puertas.get(i).dibujar(g);
+					}else {
+						if (this.puertas.get(i).equals(this.puertas.get(validad))) {
+							this.puertas.get(validad).dibujar(g);
+							System.out.println(validad);
+						}
+					}
+					
+//			if (!this.puertas.get(i).isEntra()&&this.puertas.get(i).isSale()) {
+//				this.puertas.get(i).dibujar(g);
+//			}else {
+//				if (this.puertas.get(i).isEntra()&&!this.puertas.get(i).isSale()) {
+//					this.puertas.get(i).dibujar(g);
+//				}
+//			}
+//				
+			
+			
 		}
 		
 	}

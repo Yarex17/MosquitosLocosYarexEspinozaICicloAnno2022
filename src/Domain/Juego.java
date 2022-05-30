@@ -2,6 +2,7 @@ package Domain;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Domain.Criadero.Balde;
 import Domain.Criadero.Criadero;
@@ -22,24 +23,33 @@ public class Juego {
      	this.personaje = new Personaje(300, 300);
 	}
 public void subirNivel() {
-	if (getNivel()<3&&this.ciudad.getCuadra().getCriaderos().size()==0/*&&this.ciudad.getCuadra().getPuertas().get(1).==0*/) {
-		setNivel(getNivel()+1);
+	for (int i = 0; i < this.ciudad.getCuadra().getPuertas().size(); i++) {
+		if (getNivel()<3&&this.ciudad.getCuadra().getCriaderos().size()==0 && this.ciudad.getCuadra().getPuertas().get(i).getEdificacion().getCriaderos().size()==0) {
+			setNivel(getNivel()+1);
+		}
 	}
 }
 	public void actualizar() {
 		subirNivel();
+		for (int i = 0; i < this.ciudad.getCuadra().getPuertas().size(); i++) {
+			this.ciudad.getCuadra().getPuertas().get(i).collison(personaje);
+		}
 		for (int i = 0; i < this.balas.size(); i++) {
 		
 			this.balas.get(i).mover();
 			for (int j = 0; j < this.ciudad.getCuadra().getMosquitos().size(); j++) {
 				if (this.balas.get(i).colision(this.ciudad.getCuadra().getMosquitos().get(j))){
+					this.balas.remove(i);
 					this.ciudad.getCuadra().getMosquitos().remove(j);
-					//this.balas.remove(i);
+					
 				}
 			}
 			for (int j = 0; j < this.ciudad.getCuadra().getCriaderos().size(); j++) {
+System.out.println(this.ciudad.getCuadra().getCriaderos().size());
 				if (this.balas.get(i).colision(this.ciudad.getCuadra().getCriaderos().get(j))){
+					this.balas.remove(i);
 					this.ciudad.getCuadra().getCriaderos().remove(j);
+					
 				}
 			}
 			}
@@ -64,6 +74,8 @@ public void subirNivel() {
 					}
 				}	
 		}
+		
+		
 		for (int j = 0; j < this.ciudad.getCuadra().getCriaderos().size(); j++) {
 			if (this.personaje.Rango(this.ciudad.getCuadra().getCriaderos().get(j))) {
 				Bala bala = this.personaje.disparar(posX, posY);

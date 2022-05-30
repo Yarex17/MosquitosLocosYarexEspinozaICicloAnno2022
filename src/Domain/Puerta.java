@@ -1,6 +1,10 @@
 package Domain;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Puerta {
 	private double posY,posX;
@@ -8,14 +12,22 @@ public class Puerta {
 	private boolean entra;
 	private boolean sale;
 	private Edificacion edificacion;
+	protected BufferedImage imagen;
 	Puerta() {
     this.entra=false;
-    this.sale=false;
+    this.sale=true;
 		this.posX=Math.random()*760;
 		this.posY=Math.random()*560;
 		this.posAntY=posY;
 		this.posAntX=posX;
 		this.edificacion=new Edificacion();
+		try {
+			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/puerta.png"));
+//https://www.flaticon.es/icono-gratis/puerta_2197491?term=puerta&page=1&position=7&page=1&position=7&related_id=2197491&origin=search
+			} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void collison(Personaje personaje) {
@@ -41,12 +53,16 @@ public class Puerta {
 	
 	
 	public void dibujar(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect((int)this.posX, (int)this.posY, 40, 40);
 		if (isEntra()&&!isSale()) {
 			this.edificacion.dibujar(g);
+			g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
+
+			
 		}
-		
+		g.drawString(this.isEntra()+"/"+ this.isSale(), (int) this.posX, (int) this.posY);
+		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
+
+
 	}
 
 	public double getPosY() {
@@ -95,6 +111,14 @@ public class Puerta {
 
 	public void setSale(boolean sale) {
 		this.sale = sale;
+	}
+
+	public Edificacion getEdificacion() {
+		return edificacion;
+	}
+
+	public void setEdificacion(Edificacion edificacion) {
+		this.edificacion = edificacion;
 	}
 	
 	

@@ -86,9 +86,7 @@ if (((this.posX < x+ 40 && this.posX >= x)
 	public void dibujar(Graphics g) {
 		
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
-		g.setColor(Color.white);
-        g.drawOval(this.posX-20, this.posY-20, 100, 100);
-		
+		g.setColor(Color.white);	
         g.setFont(new Font("Times New Roman", Font.BOLD, 15));
         g.drawString("Vida:"+this.vida+"",5, 20);
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);

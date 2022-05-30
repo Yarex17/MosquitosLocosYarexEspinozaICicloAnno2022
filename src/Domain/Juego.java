@@ -61,7 +61,6 @@ public void generarCargador() {
 				}
 			}
 			for (int j = 0; j < this.ciudad.getCuadra().getCriaderos().size(); j++) {
-System.out.println(this.ciudad.getCuadra().getCriaderos().size());
 				if (this.balas.get(i).colision(this.ciudad.getCuadra().getCriaderos().get(j))){
 					this.balas.remove(i);
 					this.ciudad.getCuadra().getCriaderos().remove(j);

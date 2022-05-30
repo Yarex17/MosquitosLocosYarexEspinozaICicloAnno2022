@@ -11,8 +11,6 @@ public Ciudad() {
 	this.cuadra = new Cuadra();
 }
 
-public  void generarCriadero() {
-}
 public  void dibujar(Graphics g) {
 	cuadra.dibujar(g);
 }

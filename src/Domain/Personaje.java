@@ -37,6 +37,22 @@ public class Personaje {
 		}
 	} // constructor	
 	
+	public int getCantidaBalas() {
+		return cantidaBalas;
+	}
+
+	public void setCantidaBalas(int cantidaBalas) {
+		this.cantidaBalas = cantidaBalas;
+	}
+
+	public double getRango() {
+		return rango;
+	}
+
+	public void setRango(double rango) {
+		this.rango = rango;
+	}
+
 	public Bala disparar(int posX,int posY) {
 		if(this.cantidaBalas>0) {
 			this.cantidaBalas=this.cantidaBalas-1;
@@ -54,13 +70,13 @@ if (((this.posX < x+ 40 && this.posX >= x)
 	return false;
 }
 	}
-	public Bala disparar() {
-		if(this.cantidaBalas>0) {
-			this.cantidaBalas=this.cantidaBalas-1;
-			return new Bala(this.posX+15, this.posY+15,posX,posY);
-		}
-		return null;
-	} // disparar
+//	public Bala disparar() {
+//		if(this.cantidaBalas>0) {
+//			this.cantidaBalas=this.cantidaBalas-1;
+//			return new Bala(this.posX+15, this.posY+15,posX,posY);
+//		}
+//		return null;
+//	} // disparar
 	public boolean Rango(Mosquito mosquito) {
 		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
 				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
@@ -92,8 +108,7 @@ if (((this.posX < x+ 40 && this.posX >= x)
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
 	} // dibujar
 	
-	public void atacar() {}
-	
+
 	public void moverDerecha() {
 		this.posX+=4;
 	}

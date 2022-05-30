@@ -12,7 +12,7 @@ public  class Cuadra {
 private ArrayList<Puerta> puertas;
 private ArrayList<Criadero> criaderos;
 private ArrayList<Mosquito> mosquitos;
-	
+	private int  numeroCuadra;
 	public Cuadra() {
 		super();
 		this.puertas=new ArrayList<Puerta>();
@@ -36,10 +36,12 @@ private ArrayList<Mosquito> mosquitos;
 		
 	}
 
-
+public void cambiocuadra(int nivel) {
+	setNumeroCuadra(nivel);
+}
 	public void dibujar(Graphics g) {
 	
-		switch (1) {
+		switch (getNumeroCuadra()) {
 		case 1:
 			g.setColor(Color.RED);
 			break;
@@ -76,7 +78,6 @@ private ArrayList<Mosquito> mosquitos;
 					}else {
 						if (this.puertas.get(i).equals(this.puertas.get(validad))) {
 							this.puertas.get(validad).dibujar(g);
-							System.out.println(validad);
 						}
 					}
 					
@@ -92,6 +93,12 @@ private ArrayList<Mosquito> mosquitos;
 			
 		}
 		
+	}
+	public int getNumeroCuadra() {
+		return numeroCuadra;
+	}
+	public void setNumeroCuadra(int numeroCuadra) {
+		this.numeroCuadra = numeroCuadra;
 	}
 	public ArrayList<Puerta> getPuertas() {
 		return puertas;

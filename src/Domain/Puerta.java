@@ -13,6 +13,7 @@ public class Puerta {
 	private boolean sale;
 	private Edificacion edificacion;
 	protected BufferedImage imagen;
+	
 	Puerta() {
     this.entra=false;
     this.sale=true;

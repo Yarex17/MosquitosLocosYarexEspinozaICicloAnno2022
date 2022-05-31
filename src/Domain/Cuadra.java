@@ -3,6 +3,8 @@ package Domain;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
@@ -12,16 +14,29 @@ public  class Cuadra {
 private ArrayList<Puerta> puertas;
 private ArrayList<Criadero> criaderos;
 private ArrayList<Mosquito> mosquitos;
-	private int  numeroCuadra;
-	public Cuadra() {
+	private int  nivel;
+	public Cuadra(int nivel) {
 		super();
 		this.puertas=new ArrayList<Puerta>();
 		this.criaderos=new ArrayList<Criadero>();
 		this.mosquitos=new ArrayList<Mosquito>();
 		this.mosquitos.add(new Dengue(300, 200));
+		this.nivel=nivel;
+		
         generarEntradas();
         generarCriadero();
+       //agregar();
 
+	}
+	public void agregar() {
+for (int i = 0; i < this.criaderos.size(); i++) {
+	for (int j = 0; j < (int) (Math.random()*5+1); j++) {
+		Mosquito mosquito=this.criaderos.get(i).generarMosquitos();
+		if (mosquito!=null) {
+			this.mosquitos.add(mosquito);
+		}
+	}
+}
 	}
 	public void generarEntradas() {
 		for (int i = 0; i < 3; i++) {
@@ -30,18 +45,22 @@ private ArrayList<Mosquito> mosquitos;
 	}
 	
 	public void generarCriadero() {
+	
 	for (int i = 0; i < 3; i++) {
-		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno(i+1));
+		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random()*3+1)));
 	}
 		
 	}
+	public void generarMosquitos() {
+		for (int i = 0; i <criaderos.size(); i++) {
+			this.mosquitos.add(this.criaderos.get(i).generarMosquitos());
+		}
+	}
+ 
 
-public void cambiocuadra(int nivel) {
-	setNumeroCuadra(nivel);
-}
 	public void dibujar(Graphics g) {
 	
-		switch (getNumeroCuadra()) {
+		switch (getNivel()) {
 		case 1:
 			g.setColor(Color.RED);
 			break;
@@ -81,24 +100,17 @@ public void cambiocuadra(int nivel) {
 						}
 					}
 					
-//			if (!this.puertas.get(i).isEntra()&&this.puertas.get(i).isSale()) {
-//				this.puertas.get(i).dibujar(g);
-//			}else {
-//				if (this.puertas.get(i).isEntra()&&!this.puertas.get(i).isSale()) {
-//					this.puertas.get(i).dibujar(g);
-//				}
-//			}
-//				
-			
+		
 			
 		}
 		
 	}
-	public int getNumeroCuadra() {
-		return numeroCuadra;
+	
+	public int getNivel() {
+		return nivel;
 	}
-	public void setNumeroCuadra(int numeroCuadra) {
-		this.numeroCuadra = numeroCuadra;
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 	public ArrayList<Puerta> getPuertas() {
 		return puertas;

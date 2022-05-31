@@ -8,9 +8,13 @@ import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
 public class Llanta extends Criadero{
+public Llanta() {
+super();
+this.valor=5;
 
+}
 	@Override
-	public Mosquito generaMosquitos() {
+	public Mosquito generaMosquito() {
 		// TODO Auto-generated method stub
 		return new Dengue(this.posX, this.posY);
 	}

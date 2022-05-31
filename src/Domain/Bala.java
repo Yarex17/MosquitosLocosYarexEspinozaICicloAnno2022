@@ -48,7 +48,7 @@ public class Bala {
 			return true;
 		}
 		return false;
-	} // colision
+	} // colision 
 	
 	
 	public void mover() {

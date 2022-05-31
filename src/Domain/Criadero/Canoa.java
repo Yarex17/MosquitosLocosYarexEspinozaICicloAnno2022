@@ -8,9 +8,12 @@ import Domain.Enemigo.Mosquito;
 import Domain.Enemigo.Zika;
 
 public class Canoa extends Criadero {
-
+public Canoa() {
+super();
+this.valor=15;
+}
 	@Override
-	public Mosquito generaMosquitos() {
+	public Mosquito generaMosquito() {
 		// TODO Auto-generated method stub
 		return new Zika(this.posX, this.posY);
 	}

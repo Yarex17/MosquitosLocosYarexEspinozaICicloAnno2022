@@ -11,8 +11,10 @@ import Domain.Personaje;
 public  abstract class Mosquito {
 	protected double posX, posY;
 	protected int direccion;
-	protected boolean genero;
+	protected boolean hembra;
 	protected int contidadPicaduras;
+	protected int valor;
+	
 	protected BufferedImage imagenMosquito;
 	
 	
@@ -29,8 +31,18 @@ public  abstract class Mosquito {
 			e.printStackTrace();
 		}
 	}
- abstract void daño(boolean colision,Personaje personaje);
+ abstract void daño(Personaje personaje);
  abstract void efecto();
+ 
+ public  void colision(Personaje personaje) {
+if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX()))
+				&& ((this.posY <= personaje.getPosY() + 20) && (this.posY >= personaje.getPosY()))) {
+	daño(personaje);
+	return;
+}
+ }
+ 
+ 
  public  void movimiento() {
 	 this.posY += 1 * this.direccion;
 		if (this.posY <= 0) {
@@ -42,21 +54,28 @@ public  abstract class Mosquito {
  }
 public void dibujar(Graphics g) {
 	//g.drawRect((int) this.posX, (int) this.posY, 20, 20);
+	g.drawString(isHembra()+"", (int) this.posX, (int) this.posY);
 	g.drawImage(this.imagenMosquito, (int) this.posX, (int) this.posY, null);
 }
+public int getValor() {
+	return valor;
+}
+public void setValor(int valor) {
+	this.valor = valor;
+}
  public void darGenero() {
-	if (((int) Math.random()*1)==1) {
-		setGenero(true);
+	if ((int) (Math.random()*2+1)!=2) {
+		setHembra(true);
 	}else {
-		setGenero(false);
+		setHembra(false);
 	}
 }
-	public boolean isGenero() {
-	return genero;
+	public boolean isHembra() {
+	return hembra;
 }
 	
-public void setGenero(boolean genero) {
-	this.genero = genero;
+public void setHembra(boolean genero) {
+	this.hembra = genero;
 }
 	public double getPosX() {
 		return posX;

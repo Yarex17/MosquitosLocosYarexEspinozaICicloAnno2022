@@ -8,10 +8,11 @@ import Domain.Enemigo.Zika;
 
 public class PlatoMaceta extends Criadero {
 public PlatoMaceta() {
-	
+	super();
+	this.valor=15;
 }
 	@Override
-	public Mosquito generaMosquitos() {
+	public Mosquito generaMosquito() {
 		// TODO Auto-generated method stub
 		return new Zika(this.posX,this.posY);
 	}

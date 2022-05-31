@@ -60,7 +60,7 @@ public class Puerta {
 
 			
 		}
-		g.drawString(this.isEntra()+"/"+ this.isSale(), (int) this.posX, (int) this.posY);
+		//g.drawString(this.isEntra()+"/"+ this.isSale(), (int) this.posX, (int) this.posY);
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 
 

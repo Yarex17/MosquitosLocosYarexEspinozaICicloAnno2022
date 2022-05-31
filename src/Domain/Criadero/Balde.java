@@ -7,11 +7,16 @@ import java.util.concurrent.ThreadFactory;
 import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
-public class Balde extends Criadero implements Runnable{
+public class Balde extends Criadero {
 
 	
+	public Balde() {
+		super();
+		this.valor=5;
+	}
+
 	@Override
-	public Mosquito generaMosquitos() {
+	public Mosquito generaMosquito() {
 		
 		return new Dengue(this.posX, this.posY);
 	}
@@ -24,11 +29,7 @@ public class Balde extends Criadero implements Runnable{
 		
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 

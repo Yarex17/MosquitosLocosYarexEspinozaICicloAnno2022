@@ -9,12 +9,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Cargador {
-	private int posX;
-	private int posY;
+	private double posX;
+	private double posY;
 	private BufferedImage imagen;
 	public Cargador() {
-		this.posX = (int)Math.random()*760;
-		this.posY = (int)Math.random()*560;
+		this.posX = Math.random()*760;
+		this.posY = Math.random()*560;
 		try {
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/carga.png"));
 			
@@ -25,21 +25,21 @@ public class Cargador {
 		}
 	}
 	
-	public int getPosX() {
+	public double getPosX() {
 		return posX;
 	}
-	public void setPosX(int posX) {
+	public void setPosX(double posX) {
 		this.posX = posX;
 	}
-	public int getPosY() {
+	public double getPosY() {
 		return posY;
 	}
-	public void setPosY(int posY) {
+	public void setPosY(double posY) {
 		this.posY = posY;
 	}
 public void dibujar(Graphics g) {
 		
-		g.drawImage(this.imagen, this.posX,  this.posY, null);
+		g.drawImage(this.imagen,(int) this.posX,  (int) this.posY, null);
 		
 	} // dibujar
 }

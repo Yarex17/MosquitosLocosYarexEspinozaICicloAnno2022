@@ -6,27 +6,33 @@ public class Chikungunya extends Mosquito {
 
 	public Chikungunya(double posX, double posY) {
 		super(posX, posY);
-		// TODO Auto-generated constructor stub
+		if (hembra) {
+			this.valor=4;
+		}else {
+			this.valor=1;
+		}
 	}
 
 
 
 	@Override
 	void efecto() {
-		// TODO Auto-generated method stub
+		if (isHembra()) {
+			
+		}
 		
 	}
 
 
 
 	@Override
-	void daño(boolean colision, Personaje personaje) {
-		if (colision) {
-			if (isGenero()) {
+	void daño( Personaje personaje) {
+		
+			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-10);
 				setContidadPicaduras(getContidadPicaduras()+1);
 			} 
-		}
+		
 		
 	}
 

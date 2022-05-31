@@ -14,12 +14,14 @@ import Domain.Enemigo.Mosquito;
 public class Edificacion  {
 	private double posY,posX;
 	private ArrayList<Criadero> criaderos;
+	private ArrayList<Mosquito> mosquitos;
 	protected BufferedImage imagen;
 	public Edificacion() {
 	super();
 		this.posY = 0;
 		this.posX = 0;
-		criaderos=new ArrayList<Criadero>(); 
+		this.criaderos=new ArrayList<Criadero>(); 
+		this.mosquitos=new ArrayList<Mosquito>();
 		generarCriadero();
 		try {
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/fondoEdifio.png"));
@@ -30,13 +32,33 @@ public class Edificacion  {
 		}
 	}
 
+	public ArrayList<Mosquito> getMosquitos() {
+		return mosquitos;
+	}
 
+	public void setMosquitos(ArrayList<Mosquito> mosquitos) {
+		this.mosquitos = mosquitos;
+	} 
+
+	public void generarCriadero() {
+		for (int i = 0; i < 1; i++) {
+			if (criaderos.size()<=5) {
+				criaderos.add(FabricaCriaderos.crearCriaderoInterno((int) (Math.random()*3+1)));
+
+			}
+			}
+		
+	}
 public void dibujar(Graphics g) {
 	
 	g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 
 		for (int i = 0; i < criaderos.size(); i++) {
 			criaderos.get(i).dibujar(g);
+		
+	}
+		for (int i = 0; i < this.mosquitos.size(); i++) {
+			this.mosquitos.get(i).dibujar(g);
 		
 	}
 }
@@ -67,14 +89,6 @@ public void setCriaderos(ArrayList<Criadero> criaderos) {
 		this.posX = posX;
 	}
 
-	public void generarCriadero() {
-		for (int i = 0; i < 2; i++) {
-			if (criaderos.size()<=5) {
-				criaderos.add(FabricaCriaderos.crearCriaderoInterno(i+1));
-
-			}
-			}
-		
-	}
+	
 	
 }

@@ -6,7 +6,11 @@ public class Zika extends Mosquito {
 
 	public Zika(double posX, double posY) {
 		super(posX, posY);
-		// TODO Auto-generated constructor stub
+		if (hembra) {
+			this.valor=6;
+		}else {
+			this.valor=1;
+		}
 	}
 
 	
@@ -20,9 +24,13 @@ public class Zika extends Mosquito {
 
 
 	@Override
-	void daño(boolean colision, Personaje personaje) {
-		// TODO Auto-generated method stub
+	void daño( Personaje personaje) {
 		
-	}
+			if (isHembra()) {
+				personaje.setVida(personaje.getVida()-15);
+				setContidadPicaduras(getContidadPicaduras()+1);
+			} 
+		}		
+	
 
 }

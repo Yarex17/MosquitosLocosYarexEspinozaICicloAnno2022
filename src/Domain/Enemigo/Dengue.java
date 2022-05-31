@@ -6,6 +6,12 @@ public class Dengue extends Mosquito{
 
 	public Dengue(double posX, double posY) {
 		super(posX, posY);
+		if (hembra) {
+			this.valor=2;
+		}else {
+			this.valor=1;
+		}
+		
 	}
 
 	
@@ -18,10 +24,15 @@ public class Dengue extends Mosquito{
 	}
 
 	@Override
-	void daño(boolean colision, Personaje personaje) {
-		// TODO Auto-generated method stub
+	void daño( Personaje personaje) {
 		
-	}
+			if (isHembra()) {
+				personaje.setVida(personaje.getVida()-5);
+				setContidadPicaduras(getContidadPicaduras()+1);
+			} 
+		}
+
+	
 
 	
 

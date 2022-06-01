@@ -24,7 +24,7 @@ public class Zika extends Mosquito {
 
 
 	@Override
-	void daño( Personaje personaje) {
+	void danio( Personaje personaje) {
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-15);

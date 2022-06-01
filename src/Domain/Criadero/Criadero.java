@@ -5,17 +5,19 @@ import java.util.Iterator;
 
 import Domain.Enemigo.Mosquito;
 
-public abstract class Criadero  {
+public abstract class Criadero extends Thread {
 	protected double posX, posY;
 	protected int valor;
 	private Thread thread;
 	private long espera;
 	private int  contadorColocacion;
 	public Criadero() {
+		
 		this.posX = Math.random()*760;
 		this.posY = Math.random()*560;
 		this.espera=6;//60000
 		this.contadorColocacion=1;
+		//thread.start();
 	}
 
 	public abstract Mosquito generaMosquito();
@@ -43,7 +45,12 @@ public abstract class Criadero  {
 	
 		
 	}
-	
+	@Override
+	public void run() {
+		while (true) {
+			
+		}
+	}
 	
 	
 	

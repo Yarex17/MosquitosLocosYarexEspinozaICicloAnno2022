@@ -12,6 +12,7 @@ public  abstract class Mosquito {
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean hembra;
+	protected boolean colision;
 	protected int contidadPicaduras;
 	protected int valor;
 	
@@ -22,6 +23,7 @@ public  abstract class Mosquito {
 		this.posX = posX;
 		this.posY = posY;
 		this.direccion=1;
+		this.colision=false;
 		darGenero();
 		try {
 			this.imagenMosquito=ImageIO.read(getClass().getResourceAsStream("/Assets/Mosquito.png"));
@@ -31,15 +33,22 @@ public  abstract class Mosquito {
 			e.printStackTrace();
 		}
 	}
- abstract void daño(Personaje personaje);
+ abstract void danio(Personaje personaje);
  abstract void efecto();
  
  public  void colision(Personaje personaje) {
 if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX()))
 				&& ((this.posY <= personaje.getPosY() + 20) && (this.posY >= personaje.getPosY()))) {
-	daño(personaje);
-	return;
+	if (!isColision()) {
+		if (isHembra()) {
+			danio(personaje);
+	}
+		setColision(true);
+	}	
+}else {
+	setColision(false);
 }
+
  }
  
  
@@ -97,6 +106,18 @@ public void setHembra(boolean genero) {
 	}
 	public void setContidadPicaduras(int contidadPicaduras) {
 		this.contidadPicaduras = contidadPicaduras;
+	}
+	public int getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
+	}
+	public boolean isColision() {
+		return colision;
+	}
+	public void setColision(boolean colision) {
+		this.colision = colision;
 	}
 	
 	

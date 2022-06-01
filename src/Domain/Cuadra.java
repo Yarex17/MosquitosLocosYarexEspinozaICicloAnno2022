@@ -10,14 +10,12 @@ import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
 public  class Cuadra {
-	
-private ArrayList<Puerta> puertas;
+private ArrayList<Edificio>edificios;
 private ArrayList<Criadero> criaderos;
 private ArrayList<Mosquito> mosquitos;
 	private int  nivel;
 	public Cuadra(int nivel) {
-		super();
-		this.puertas=new ArrayList<Puerta>();
+		this.edificios=new ArrayList<Edificio>();
 		this.criaderos=new ArrayList<Criadero>();
 		this.mosquitos=new ArrayList<Mosquito>();
 		this.mosquitos.add(new Dengue(300, 200));
@@ -40,7 +38,7 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 	}
 	public void generarEntradas() {
 		for (int i = 0; i < 3; i++) {
-			this.puertas.add(new Puerta());
+			this.edificios.add(new Edificio());
 		}
 	}
 	
@@ -74,8 +72,9 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 		default:
 			break;
 		}
-		//System.out.println(entradas.size());
+		
 		g.fillRect(0,0, 800, 600);
+		
 		for (int i = 0; i < this.criaderos.size(); i++) {
 			this.criaderos.get(i).dibujar(g);
 		
@@ -84,26 +83,23 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 			this.mosquitos.get(i).dibujar(g);
 		
 		}
-		int validad=-1;
-		for (int i = 0; i < puertas.size(); i++) {
-			
-					if (this.puertas.get(i).isEntra()&&!this.puertas.get(i).isSale()) {
-						validad=i;
-					}else {
-						
-					}
-					if (validad==-1&&!this.puertas.get(i).isEntra()&&this.puertas.get(i).isSale()) {
-						this.puertas.get(i).dibujar(g);
-					}else {
-						if (this.puertas.get(i).equals(this.puertas.get(validad))) {
-							this.puertas.get(validad).dibujar(g);
-						}
-					}
-					
-		
-			
+		int validacion=0;
+		int puertaActiva=0;
+		for (int i = 0; i < this.edificios.size(); i++) {
+			if (!this.edificios.get(i).isEntra()) {
+				validacion++;
+			}else {
+				 puertaActiva=i;
+			}	
 		}
-		
+		for (int i = 0; i < this.edificios.size(); i++) {
+			if (validacion==this.edificios.size()) {
+				this.edificios.get(i).dibujar(g);
+				
+			}else {
+				this.edificios.get(puertaActiva).dibujar(g);
+			}
+		}
 	}
 	
 	public int getNivel() {
@@ -112,12 +108,7 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public ArrayList<Puerta> getPuertas() {
-		return puertas;
-	}
-	public void setPuertas(ArrayList<Puerta> puertas) {
-		this.puertas = puertas;
-	}
+	
 	public ArrayList<Criadero> getCriaderos() {
 		return criaderos;
 	}
@@ -129,6 +120,12 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 	}
 	public void setMosquitos(ArrayList<Mosquito> mosquitos) {
 		this.mosquitos = mosquitos;
+	}
+	public ArrayList<Edificio> getEdificios() {
+		return edificios;
+	}
+	public void setEdificios(ArrayList<Edificio> edificios) {
+		this.edificios = edificios;
 	}
 	
 	

@@ -26,7 +26,7 @@ public class Chikungunya extends Mosquito {
 
 
 	@Override
-	void daño( Personaje personaje) {
+	void danio( Personaje personaje) {
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-10);

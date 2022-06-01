@@ -14,10 +14,13 @@ this.cuadras.add(new Cuadra(nivel));
 }
 public void subirNivel() {
 	
-		if (getNivel()<2&&this.cuadras.get(0).getCriaderos().size()==0 && this.cuadras.get(0).getCriaderos().size()==0) {
-			setNivel(getNivel()+1);
-			this.cuadras.remove(0);
-			this.cuadras.add(new Cuadra(getNivel()));
+		for (int i = 0; i < 	this.cuadras.get(0).getEdificios().size(); i++) {
+			if (getNivel()<3&&this.cuadras.get(0).getCriaderos().size()==0 && this.cuadras.get(0).getCriaderos().size()==0 &&
+					this.cuadras.get(0).getEdificios().get(i).getCriaderos().size()==0) {
+				setNivel(getNivel()+1);
+				this.cuadras.remove(0);
+				this.cuadras.add(new Cuadra(getNivel()));
+			}
 		}
 	}
 

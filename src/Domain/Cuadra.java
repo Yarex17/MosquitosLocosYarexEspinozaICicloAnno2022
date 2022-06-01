@@ -18,7 +18,6 @@ private ArrayList<Mosquito> mosquitos;
 		this.edificios=new ArrayList<Edificio>();
 		this.criaderos=new ArrayList<Criadero>();
 		this.mosquitos=new ArrayList<Mosquito>();
-		this.mosquitos.add(new Dengue(300, 200));
 		this.nivel=nivel;
 		
         generarEntradas();
@@ -26,16 +25,14 @@ private ArrayList<Mosquito> mosquitos;
        //agregar();
 
 	}
-	public void agregar() {
-for (int i = 0; i < this.criaderos.size(); i++) {
-	for (int j = 0; j < (int) (Math.random()*5+1); j++) {
-		Mosquito mosquito=this.criaderos.get(i).generarMosquitos();
-		if (mosquito!=null) {
-			this.mosquitos.add(mosquito);
-		}
-	}
-}
-	}
+
+//	public void generarMosquito() {
+//		for (int i = 0; i < this.criaderos.size(); i++) {
+//
+//			this.criaderos.get(i).generarMosquitos(mosquitos);
+//
+//		}
+//	}
 	public void generarEntradas() {
 		for (int i = 0; i < 3; i++) {
 			this.edificios.add(new Edificio());
@@ -51,7 +48,7 @@ for (int i = 0; i < this.criaderos.size(); i++) {
 	}
 	public void generarMosquitos() {
 		for (int i = 0; i <criaderos.size(); i++) {
-			this.mosquitos.add(this.criaderos.get(i).generarMosquitos());
+			this.criaderos.get(i).generarMosquitos(mosquitos);
 		}
 	}
  

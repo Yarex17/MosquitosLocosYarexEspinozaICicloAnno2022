@@ -51,7 +51,16 @@ public void generarCargador() {
 //	this.nivel.getCuadras().get(0).getEdificios().get(i).collison(personaje);
 //}
 //}
+for (int i = 0; i < this.nivel.getCuadras().get(0).getMosquitos().size(); i++) {
+	 this.nivel.getCuadras().get(0).getMosquitos().get(i).movimiento();
+}
 
+this.nivel.getCuadras().get(0).generarMosquitos();
+
+
+for (int i = 0; i < this.nivel.getCuadras().get(0).getEdificios().size(); i++) {
+	
+}
 	
 			for (int i = 0; i < this.nivel.getCuadras().get(0).getEdificios().size(); i++) {
 				
@@ -85,12 +94,12 @@ public void generarCargador() {
 								break;
 							}
 						}//for mosquitos internos
-						
-						
-						this.balas.remove(j);
+				
+					
 						}
 						
 					} else {
+						
 						this.nivel.getCuadras().get(0).getEdificios().get(i).collison(personaje);
 						for (int j = 0; j < this.nivel.getCuadras().get(0).getMosquitos().size(); j++) {
 							this.nivel.getCuadras().get(0).getMosquitos().get(j).colision(personaje);	
@@ -111,10 +120,8 @@ public void generarCargador() {
 						}
 						for (int k = 0; k < this.nivel.getCuadras().get(0).getCriaderos().size(); k++) {
 							if (this.balas.get(j).colision(this.nivel.getCuadras().get(0).getCriaderos().get(k))) {
+								this.nivel.getCuadras().get(0).getCriaderos().remove(k);
 								this.balas.remove(j);
-								System.out.println("entra");
-								this.nivel.getCuadras().get(0).getCriaderos().remove(j);
-								
 								break;
 							}
 						}//for crideros externos
@@ -131,14 +138,15 @@ public void generarCargador() {
 		} //actualizar
 	
 
-	public void disparar(int posX, int posY) {
-		Bala bala = this.personaje.disparar(posX, posY);
+	public void disparar(int posX, int posY) {//problemas 
+		
+		
 		for (int i = 0; i < this.nivel.getCuadras().get(0).getEdificios().size(); i++) {
 			if (this.nivel.getCuadras().get(0).getEdificios().get(i).isEntra()) {
 				// rango
 				for (int h = 0; h < this.nivel.getCuadras().get(0).getEdificios().size(); h++) {
 					if (this.personaje.Rango(this.nivel.getCuadras().get(0).getEdificios().get(i).getCriaderos().get(h))) {
-					//	Bala bala = this.personaje.disparar(posX, posY);
+						Bala bala = this.personaje.disparar(posX, posY);
 						if (bala != null) {
 							this.balas.add(bala);
 							break;
@@ -148,7 +156,7 @@ public void generarCargador() {
 
 				for (int h = 0; h < this.nivel.getCuadras().get(0).getMosquitos().size(); h++) {
 					if (this.personaje.Rango(this.nivel.getCuadras().get(0).getEdificios().get(i).getMosquitos().get(h))) {
-						//Bala bala = this.personaje.disparar(posX, posY);
+						Bala bala = this.personaje.disparar(posX, posY);
 						if (bala != null) {
 							this.balas.add(bala);
 							break;
@@ -159,7 +167,7 @@ public void generarCargador() {
 				// Rango
 				for (int k = 0; k < this.nivel.getCuadras().get(0).getCriaderos().size(); k++) {
 					if (this.personaje.Rango(this.nivel.getCuadras().get(0).getCriaderos().get(k))) {
-						//Bala bala = this.personaje.disparar(posX, posY);
+						Bala bala = this.personaje.disparar(posX, posY);
 						if (bala != null) {
 							this.balas.add(bala);
 							break;
@@ -169,7 +177,7 @@ public void generarCargador() {
 
 				for (int k = 0; k < this.nivel.getCuadras().get(0).getMosquitos().size(); k++) {
 					if (this.personaje.Rango(this.nivel.getCuadras().get(0).getMosquitos().get(k))) {
-						//Bala bala = this.personaje.disparar(posX, posY);
+						Bala bala = this.personaje.disparar(posX, posY);
 						if (bala != null) {
 							this.balas.add(bala);
 							break;

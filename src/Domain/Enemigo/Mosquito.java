@@ -8,14 +8,15 @@ import javax.imageio.ImageIO;
 
 import Domain.Personaje;
 
-public  abstract class Mosquito {
+public  abstract class Mosquito extends Thread{
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean hembra;
 	protected boolean colision;
 	protected int cantidadPicaduras;
 	protected int valor;
-
+	private Thread thread;
+	
 	private int cambio;
 	protected int contador;
 	protected BufferedImage imagenMosquito;
@@ -23,12 +24,14 @@ public  abstract class Mosquito {
 	
 	public Mosquito(double posX, double posY) {
 		this.cantidadPicaduras=0;
-		
+
 		this.posX = posX;
 		this.posY = posY;
 		this.direccion=1;
 		this.colision=false;
 		this.cambio=1;
+		this.thread=new Thread(this);
+		this.thread.start();
 		darGenero();
 		try {
 			this.imagenMosquito=ImageIO.read(getClass().getResourceAsStream("/Assets/Mosquito.png"));
@@ -48,6 +51,7 @@ if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX(
 	if (!isColision()) {
 		if (isHembra()) {
 			danio(personaje);
+			efecto(personaje);
 	}
 		setColision(true);
 	}	
@@ -72,6 +76,7 @@ if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX(
 		if (this.posX >= 760) {
 			this.direccion = -1;
 		}
+		
 switch (getCambio()) {
 		
 		case 1:
@@ -94,10 +99,26 @@ switch (getCambio()) {
 			break;
 		} 
  }
- public void contadorSegundos() {
+ public void cambiarDireccion() {
+	setCambio((int)(Math.random()*4+1));
 
 }
 
+ @Override
+public void run() {
+while (true) {
+	cambiarDireccion();
+	
+	try {
+		//thread.sleep(60);
+		this.thread.sleep(1500);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+}
 
 
 public void dibujar(Graphics g) {

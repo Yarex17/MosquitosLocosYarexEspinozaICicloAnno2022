@@ -17,7 +17,7 @@ public class Zika extends Mosquito implements Runnable{
 	}
 
 	
-public void contadorsegundos() {
+public void contadorSegundos() {
 	setContador(getContador()+1);
 }
 	@Override
@@ -39,8 +39,6 @@ if (isHembra()) {if (getContador()==0) {
 		
 	}
 
-
-
 	@Override
 	void danio( Personaje personaje) {
 		
@@ -54,7 +52,6 @@ if (isHembra()) {if (getContador()==0) {
 	public void run() {
 	while (true) {
 		contadorSegundos();
-		
 		try {
 			this.thread.sleep(1000);
 			

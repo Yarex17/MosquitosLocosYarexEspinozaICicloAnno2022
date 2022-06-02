@@ -12,7 +12,7 @@ public PlatoMaceta() {
 	this.valor=15;
 }
 	@Override
-	public Mosquito generaMosquito() {
+	public Mosquito crearMosquito() {
 		// TODO Auto-generated method stub
 		return new Zika(this.posX,this.posY);
 	}

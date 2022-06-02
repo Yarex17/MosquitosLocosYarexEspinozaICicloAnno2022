@@ -69,6 +69,14 @@ public class Edificio {
 				setEntra(false);
 				setPosXPuerta(getPosAntX());
 				setPosYPuerta(getPosAntY());
+				if (getPosYPuerta()<getPosYPuerta()+50) {
+					personaje.setPosX(getPosXPuerta()+50);
+					personaje.setPosY(getPosYPuerta()-50);
+				}else {
+					personaje.setPosX(getPosXPuerta()+50);
+					personaje.setPosY(getPosYPuerta()+50);
+				}
+				
 			}
 
 		}
@@ -77,7 +85,8 @@ public class Edificio {
 	public void actualizar() {
 		
 		if (isEntra()) {
-			generarMosquito();
+			generarMosquito(); 
+			
 			for (int i = 0; i < this.mosquitos.size(); i++) {
 				this.mosquitos.get(i).movimiento();
 				this.mosquitos.get(i).colision(personaje);
@@ -165,6 +174,7 @@ public class Edificio {
 
 	public void dibujar(Graphics g) {
 		if (isEntra()) {
+			
 			g.drawImage(this.habitacion, (int) this.posX, (int) this.posY, null);
 
 			for (int i = 0; i < criaderos.size(); i++) {

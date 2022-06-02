@@ -7,14 +7,14 @@ import Domain.Enemigo.Chikungunya;
 import Domain.Enemigo.Mosquito;
 
 public class Florero extends Criadero{
+	
 public Florero() {
 
 this.valor=10;
 
 }
 	@Override
-	public Mosquito generaMosquito() {
-		// TODO Auto-generated method stub
+	public Mosquito crearMosquito() {
 		return new Chikungunya(this.posX, this.posY);
 	}
 

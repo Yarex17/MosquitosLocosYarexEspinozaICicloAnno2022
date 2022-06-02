@@ -13,8 +13,8 @@ import Domain.Enemigo.Mosquito;
 
 public class Personaje {
 
-	private int posX;
-	private int posY;
+	private double posX;
+	private double posY;
 	private int vida;
 	private int puntos;
 	private int direccion;
@@ -22,7 +22,7 @@ public class Personaje {
 	private double rango;
 	private BufferedImage imagen;
 	private int velocidad;
-	public Personaje(int posX, int posY) {
+	public Personaje(double posX, double posY) {
 		this.direccion=1;
 		this.velocidad=6;
 		this.posX=posX;
@@ -73,13 +73,7 @@ public class Personaje {
 			return false;
 		}
 	}
-//	public Bala disparar() {
-//		if(this.cantidaBalas>0) {
-//			this.cantidaBalas=this.cantidaBalas-1;
-//			return new Bala(this.posX+15, this.posY+15,posX,posY);
-//		}
-//		return null;
-//	} // disparar
+
 	public boolean Rango(Mosquito mosquito) {//Calcula si un mosquito esta dentro del rango de disparo 
 		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
 				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
@@ -130,19 +124,19 @@ public class Personaje {
 		this.posY+=getVelocidad()*getDireccion();
 	}
 
-	public int getPosX() {
+	public double getPosX() {
 		return posX;
 	}
 
-	public void setPosX(int posX) {
+	public void setPosX(double posX) {
 		this.posX = posX;
 	}
 
-	public int getPosY() {
+	public double getPosY() {
 		return posY;
 	}
 
-	public void setPosY(int posY) {
+	public void setPosY(double posY) {
 		this.posY = posY;
 	}
 

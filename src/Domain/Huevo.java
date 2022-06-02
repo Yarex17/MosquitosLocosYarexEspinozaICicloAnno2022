@@ -14,6 +14,7 @@ public Huevo() {
 	this.contadorsegudos=0;
 	
 }
+
 public Huevo(int tiempo) {
 	this.tiempoeclosion=tiempo;
 	this.eclosion=false;

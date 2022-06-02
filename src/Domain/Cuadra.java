@@ -42,7 +42,7 @@ public class Cuadra {
 		for (int i = 0; i < 3 * this.nivel; i++) {
 			this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random() * 3 + 1)));
 		}
-	}
+	} 
 
 	public void actualizar() {
 
@@ -71,7 +71,7 @@ public class Cuadra {
 				}
 
 			}
-
+		
 			if (this.personaje.getCantidaBalas() <= 4) {
 				if (this.cargadores.size() < 1) {
 					this.cargadores.add(new Cargador());

@@ -15,7 +15,7 @@ public class Chikungunya extends Mosquito implements Runnable{
 			this.valor=1;
 		}
 	}
-	public void contadorsegundos() {
+	public void contadorSegundos() {
 		setContador(getContador()+1);
 	}
 		@Override
@@ -59,7 +59,7 @@ public class Chikungunya extends Mosquito implements Runnable{
 		
 	}
 
-
+	}
 
 	
 

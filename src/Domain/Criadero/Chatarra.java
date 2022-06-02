@@ -12,7 +12,7 @@ super();
 this.valor=10;
 }
 	@Override
-	public Mosquito generaMosquito() {
+	public Mosquito crearMosquito() {
 		// TODO Auto-generated method stub
 		return new Chikungunya(this.posX, this.posY);
 	}

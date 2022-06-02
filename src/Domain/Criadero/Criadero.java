@@ -27,16 +27,17 @@ public abstract class Criadero extends Thread {
 
 	}
 
-	public abstract Mosquito generaMosquito();
+	public abstract Mosquito crearMosquito();
 	public abstract void dibujar(Graphics g);
 
 	public  void generarMosquitos(ArrayList<Mosquito> mosquitos) {
 		 
 		for (int i = 0; i < this.huevos.size(); i++) {
-		
+		 
 			if (this.huevos.get(i).isEclosion()) {
 				//si el huevo eclosiona en el tiempo indicado  crear un mosquito 
-				this.mosquito = generaMosquito();
+				this.mosquito = crearMosquito();
+				
 				mosquitos.add(mosquito);
 				if (primerMosquito && !this.mosquito.isHembra()) {// esto lo hize para asegurar que el primer mosquito que se crea se hembra 
 					this.mosquito.setHembra(true);

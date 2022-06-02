@@ -73,19 +73,19 @@ if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX(
 switch (getCambio()) {
 		
 		case 1:
-			 this.posY += 1 * this.direccion;
+			 this.posY += 0.5 * this.direccion;
 			break;
 		case 2:
-			 this.posY += 1 * this.direccion;
-			 this.posX += 1 * this.direccion;
+			 this.posY += 0.5 * this.direccion;
+			 this.posX += 0.5 * this.direccion;
 			break;
 		case 3:
 			
-			 this.posX += 1 * this.direccion;
+			 this.posX += 0.5 * this.direccion;
 			break;
 		case 4:
-			 this.posY += 1 * this.direccion;
-			 this.posX += 1 * this.direccion;
+			 this.posY += 0.5 * this.direccion;
+			 this.posX += 0.5 * this.direccion;
 			break;
 
 		default:

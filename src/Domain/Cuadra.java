@@ -38,7 +38,7 @@ private ArrayList<Mosquito> mosquitos;
 	
 	public void generarCriadero() {
 	
-	for (int i = 0; i < 3*this.nivel; i++) {
+	for (int i = 0; i < 2*this.nivel; i++) {
 		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random()*3+1)));
 	}
 		

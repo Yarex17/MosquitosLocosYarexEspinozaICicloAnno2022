@@ -35,6 +35,7 @@ public class Edificio  {
 		this.mosquitos=new ArrayList<Mosquito>();
 		generarCriadero();
 		try {
+			
 			this.habitacion=ImageIO.read(getClass().getResourceAsStream("/Assets/fondoEdifio.png"));
 			this.puerta=ImageIO.read(getClass().getResourceAsStream("/Assets/puerta.png"));
 //https://www.flaticon.es/icono-gratis/puerta_2197491?term=puerta&page=1&position=7&page=1&position=7&related_id=2197491&origin=search
@@ -72,7 +73,7 @@ public class Edificio  {
 			}
 		}
 	public void generarCriadero() {
-		for (int i = 0; i < 2*nivel; i++) {
+		for (int i = 0; i < 1*nivel; i++) {
 		
 				criaderos.add(FabricaCriaderos.crearCriaderoInterno((int) (Math.random()*3+1)));
 

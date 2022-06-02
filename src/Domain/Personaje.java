@@ -16,6 +16,7 @@ public class Personaje {
 	private int posX;
 	private int posY;
 	private int vida;
+	private int puntos;
 	
 	private int cantidaBalas;
 	private double rango;
@@ -107,6 +108,7 @@ if (((this.posX < x+ 40 && this.posX >= x)
         g.setFont(new Font("Times New Roman", Font.BOLD, 15));
         g.drawString("Vida:"+this.vida+"",5, 20);
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
+		g.drawString("Puntos :"+getPuntos()+"",5, 60);
 	} // dibujar
 	
 
@@ -156,6 +158,14 @@ if (((this.posX < x+ 40 && this.posX >= x)
 
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 
 	

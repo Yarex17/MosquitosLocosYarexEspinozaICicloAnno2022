@@ -16,7 +16,7 @@ public class Zika extends Mosquito {
 	
 
 	@Override
-	void efecto() {
+	void efecto(Personaje personaje) {
 		// TODO Auto-generated method stub
 		
 	}

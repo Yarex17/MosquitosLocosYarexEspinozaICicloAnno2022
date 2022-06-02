@@ -12,6 +12,7 @@ public Huevo() {
 	this.thread=new Thread(this);
 	this.thread.start();
 	this.contadorsegudos=0;
+	
 }
 public Huevo(int tiempo) {
 	this.tiempoeclosion=tiempo;

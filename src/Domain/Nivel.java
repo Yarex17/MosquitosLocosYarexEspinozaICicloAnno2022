@@ -6,26 +6,21 @@ import java.util.ArrayList;
 public class Nivel {
 private int nivel;
 private ArrayList<Cuadra> cuadras;
-public Nivel() {
+private Personaje personaje;
+public Nivel(Personaje personaje) {
 this.nivel=1;
+this.personaje=personaje;
 this.cuadras=new ArrayList<Cuadra>();
-this.cuadras.add(new Cuadra(nivel));
-	
+this.cuadras.add(new Cuadra(nivel,this.personaje));
+	 
 }
 public void subirNivel() {
-	int cantidadCriaderosInternos=0;
 	
-		for (int i = 0; i < 	this.cuadras.get(0).getEdificios().size(); i++) {
-			if (this.cuadras.get(0).getEdificios().get(i).getCriaderos().size()!=0) {
-				cantidadCriaderosInternos++;
-			}
-			
-		}
 		
-		if (getNivel()<3&& this.cuadras.get(0).getCriaderos().size()==0 && cantidadCriaderosInternos==0) {
+		if (getNivel()<3&& this.cuadras.get(0).getCriaderos().size()==0 && this.cuadras.get(0).getEdificio1().getCriaderos().size()==0&& this.cuadras.get(0).getEdificio2().getCriaderos().size()==0) {
 			setNivel(getNivel()+1);
 			this.cuadras.remove(0);
-			this.cuadras.add(new Cuadra(getNivel()));
+			this.cuadras.add(new Cuadra(getNivel(),this.personaje));
 		}
 	}
 

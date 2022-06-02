@@ -27,7 +27,7 @@ public class Personaje {
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
-		this.cantidaBalas=10;
+		this.cantidaBalas=10000;
 		this.rango=20000.00;
 		try {
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
@@ -62,15 +62,15 @@ public class Personaje {
 		}
 		return null;
 	}
-	public boolean colision(int x,int y){
-if (((this.posX < x+ 40 && this.posX >= x)
-				|| (this.posX + 40 > x && this.posX <= x))
-				&& (this.posY < y + 40 && this.posY >= y
-						|| (this.posY + 40 > y && this.posY <= y))) {
-	return true;
-}else {
-	return false;
-}
+	public boolean colision(Cargador cargador){
+		if (((this.posX < cargador.getPosX() + 40 && this.posX >= cargador.getPosX())
+				|| (this.posX + 40 > cargador.getPosX() && this.posX <= cargador.getPosX()))
+				&& (this.posY < cargador.getPosY() + 40 && this.posY >= cargador.getPosY()
+						|| (this.posY + 40 > cargador.getPosY() && this.posY <= cargador.getPosY()))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 //	public Bala disparar() {
 //		if(this.cantidaBalas>0) {

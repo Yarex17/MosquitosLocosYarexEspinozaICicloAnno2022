@@ -8,7 +8,7 @@ import Domain.Enemigo.Mosquito;
 
 public class Florero extends Criadero{
 public Florero() {
-super();
+
 this.valor=10;
 
 }

@@ -16,7 +16,7 @@ public class Bala {
 	private double inicioX, inicioY, finalX, finalY, pendiente, recta, velocidadDesplasamiento,rango;
 	protected BufferedImage imagen;
 	public Bala(double inicioX, double inicioY, double finalX, double finalY) {
-		this.velocidadDesplasamiento = 2;
+		this.velocidadDesplasamiento = 1;
 		this.rango=50000.00;
 		this.inicioX = inicioX;
 		this.inicioY = inicioY;

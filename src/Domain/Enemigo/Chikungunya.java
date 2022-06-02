@@ -16,7 +16,7 @@ public class Chikungunya extends Mosquito {
 
 
 	@Override
-	void efecto() {
+	void efecto(Personaje personaje) {
 		if (isHembra()) {
 			
 		}

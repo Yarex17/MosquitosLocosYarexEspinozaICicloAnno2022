@@ -12,7 +12,9 @@ public class Cargador {
 	private double posX;
 	private double posY;
 	private BufferedImage imagen;
+
 	public Cargador() {
+	
 		this.posX = Math.random()*760;
 		this.posY = Math.random()*560;
 		try {
@@ -39,7 +41,9 @@ public class Cargador {
 	}
 public void dibujar(Graphics g) {
 		
-		g.drawImage(this.imagen,(int) this.posX,  (int) this.posY, null);
+			g.drawImage(this.imagen,(int) this.posX,  (int) this.posY, null);	
+		
+		
 		
 	} // dibujar
 }

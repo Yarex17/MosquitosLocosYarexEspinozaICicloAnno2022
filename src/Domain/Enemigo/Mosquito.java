@@ -38,7 +38,7 @@ public  abstract class Mosquito extends Thread{
 		this.thread.start();
 	}
  abstract void danio(Personaje personaje);
- abstract void efecto();
+ abstract void efecto(Personaje personaje);
  
  public  void colision(Personaje personaje) {
 if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX()))

@@ -12,11 +12,9 @@ public abstract class Criadero extends Thread {
 	private ArrayList<Huevo> huevos;
 	protected double posX, posY;
 	protected int valor;
-	private Thread thread;
-	private long espera;
 	private int  contadorColocadorHuevos;
 	private int cantidadHuevos;
-	private int tiempo;
+	
 	private boolean primerMosquito;
 	private Mosquito mosquito;
 	public Criadero() {
@@ -33,7 +31,7 @@ public abstract class Criadero extends Thread {
 	public abstract void dibujar(Graphics g);
 
 	public  void generarMosquitos(ArrayList<Mosquito> mosquitos) {
-		
+		 
 		for (int i = 0; i < this.huevos.size(); i++) {
 		
 			if (this.huevos.get(i).isEclosion()) {

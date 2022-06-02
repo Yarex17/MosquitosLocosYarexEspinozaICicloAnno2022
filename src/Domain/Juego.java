@@ -23,7 +23,6 @@ public class Juego {
 	public void actualizar() {
 		this.nivel.subirNivel();
 		this.nivel.getCuadras().get(0).actualizar();
-		//this.nivel.getCuadras().get(0).getEdificio1();
 	}
 
 	public void disparar(int posX, int posY) {// problemas
@@ -31,38 +30,6 @@ public class Juego {
 		this.nivel.getCuadras().get(0).getEdificio1().disparar(posX, posY);
 		this.nivel.getCuadras().get(0).getEdificio2().disparar(posX, posY);
 
-//	}else
-//
-//	{
-//		if (!this.nivel.getCuadras().get(0).getEdificios().get(1).isEntra()
-//				&& !this.nivel.getCuadras().get(0).getEdificios().get(2).isEntra()) {
-//
-//			// Rango
-//			for (int k = 0; k < this.nivel.getCuadras().get(0).getCriaderos().size(); k++) {
-//				if (this.personaje.Rango(this.nivel.getCuadras().get(0).getCriaderos().get(k))) {
-//
-//					Bala bala = this.personaje.disparar(posX, posY);
-//					if (bala != null) {
-//						this.balas.add(bala);
-//						bala = null;
-//						return;
-//					}
-//				}
-//			}
-//		} // rango criaderos externos
-//
-//		for (int k = 0; k < this.nivel.getCuadras().get(0).getMosquitos().size(); k++) {
-//			if (this.personaje.Rango(this.nivel.getCuadras().get(0).getMosquitos().get(k))) {
-//				Bala bala = this.personaje.disparar(posX, posY);
-//				if (bala != null) {
-//					this.balas.add(bala);
-//					bala = null;
-//					return;
-//				}
-//			}
-//		} // rango mosquitos externos
-//	} // control de entrada
-//	} // for edificios
 
 	}// disparar
 

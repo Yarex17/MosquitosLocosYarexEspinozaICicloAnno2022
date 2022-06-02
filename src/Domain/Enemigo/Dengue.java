@@ -23,14 +23,14 @@ private int picaduras;
 			}
 		}
 		
-	}
+	} 
 
 	@Override
 	void danio( Personaje personaje) {
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-5);
-				setContidadPicaduras(getContidadPicaduras()+1);
+				setCantidadPicaduras(getCantidadPicaduras()+1);
 			} 
 		}
 

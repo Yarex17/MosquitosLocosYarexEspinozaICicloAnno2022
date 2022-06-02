@@ -17,13 +17,14 @@ public class Personaje {
 	private int posY;
 	private int vida;
 	private int puntos;
-	
+	private int direccion;
 	private int cantidaBalas;
 	private double rango;
 	private BufferedImage imagen;
 	private int velocidad;
 	public Personaje(int posX, int posY) {
-		this.velocidad=5;
+		this.direccion=1;
+		this.velocidad=6;
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
@@ -79,7 +80,7 @@ public class Personaje {
 //		}
 //		return null;
 //	} // disparar
-	public boolean Rango(Mosquito mosquito) {
+	public boolean Rango(Mosquito mosquito) {//Calcula si un mosquito esta dentro del rango de disparo 
 		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
 				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
 		if (rango<=this.rango) {
@@ -90,7 +91,7 @@ public class Personaje {
 		}
 		
 	}
-	public boolean Rango(Criadero criadero) {
+	public boolean Rango(Criadero criadero) {//Calcula si un criadero esta dentro del rango de disparo 
 		double rango=((criadero.getPosX()-this.posX)*(criadero.getPosX()-this.posX)) 
 				+ ((criadero.getPosY()-this.posY)*(criadero.getPosY()-this.posY)) ;
 		if (rango<=this.rango) {
@@ -104,7 +105,8 @@ public class Personaje {
 	public void dibujar(Graphics g) {
 		
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
-		g.setColor(Color.white);	
+		g.setColor(Color.white);
+		
         g.setFont(new Font("Times New Roman", Font.BOLD, 15));
         g.drawString("Vida:"+this.vida+"",5, 20);
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
@@ -113,19 +115,19 @@ public class Personaje {
 	
 
 	public void moverDerecha() {
-		this.posX+=getVelocidad();
+		this.posX+=getVelocidad()*getDireccion();
 	}
 	
 	public void moverIzquierda() {
-		this.posX-=getVelocidad();
+		this.posX-=getVelocidad()*getDireccion();
 	}
 	
 	public void moverArriba() {
-		this.posY-=getVelocidad();
+		this.posY-=getVelocidad()*getDireccion();
 	}
 	
 	public void moverAbajo() {
-		this.posY+=getVelocidad();
+		this.posY+=getVelocidad()*getDireccion();
 	}
 
 	public int getPosX() {
@@ -147,7 +149,7 @@ public class Personaje {
 	public int getVida() {
 		return vida;
 	}
-
+ 
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
@@ -166,6 +168,14 @@ public class Personaje {
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
+	}
+
+	public int getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(int direccion) {
+		this.direccion = direccion;
 	}
 
 	

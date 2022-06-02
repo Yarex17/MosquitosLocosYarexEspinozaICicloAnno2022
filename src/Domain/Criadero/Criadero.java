@@ -45,7 +45,7 @@ public abstract class Criadero extends Thread {
 				if (this.mosquito.isHembra()) {
 					for (int j = 0; j <(int)(Math.random()*4+2); j++) {// este in me agrega los mosquitos dentro del rango establecido 
 						this.huevos.add(new Huevo());
-					}
+					} 
 				}
 				this.huevos.remove(i);
 			}

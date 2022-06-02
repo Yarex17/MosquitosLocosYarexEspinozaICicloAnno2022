@@ -8,20 +8,22 @@ import javax.imageio.ImageIO;
 
 import Domain.Personaje;
 
-public  abstract class Mosquito extends Thread{
+public  abstract class Mosquito {
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean hembra;
 	protected boolean colision;
-	protected int contidadPicaduras;
+	protected int cantidadPicaduras;
 	protected int valor;
-	private Thread thread;
+
 	private int cambio;
+	protected int contador;
 	protected BufferedImage imagenMosquito;
 	
 	
 	public Mosquito(double posX, double posY) {
-		this.thread=new Thread(this);
+		this.cantidadPicaduras=0;
+		
 		this.posX = posX;
 		this.posY = posY;
 		this.direccion=1;
@@ -35,7 +37,7 @@ public  abstract class Mosquito extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.thread.start();
+
 	}
  abstract void danio(Personaje personaje);
  abstract void efecto(Personaje personaje);
@@ -92,29 +94,16 @@ switch (getCambio()) {
 			break;
 		} 
  }
- public void cambiarDireccion() {
-	 
-	 setCambio((int)(Math.random()*4+1));
+ public void contadorSegundos() {
+
 }
+
+
+
 public void dibujar(Graphics g) {
 	//g.drawRect((int) this.posX, (int) this.posY, 20, 20);
 	g.drawString(isHembra()+"", (int) this.posX, (int) this.posY);
 	g.drawImage(this.imagenMosquito, (int) this.posX, (int) this.posY, null);
-}
-@Override
-public void run() {
-while (true) {
-	cambiarDireccion();
-	
-	try {
-		this.thread.sleep(1500);
-		
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-}
 }
 public int getValor() {
 	return valor;
@@ -157,11 +146,12 @@ public void setHembra(boolean genero) {
 	public void setPosY(double posY) {
 		this.posY = posY;
 	}
-	public int getContidadPicaduras() {
-		return contidadPicaduras;
+	
+	public int getCantidadPicaduras() {
+		return cantidadPicaduras;
 	}
-	public void setContidadPicaduras(int contidadPicaduras) {
-		this.contidadPicaduras = contidadPicaduras;
+	public void setCantidadPicaduras(int cantidadPicaduras) {
+		this.cantidadPicaduras = cantidadPicaduras;
 	}
 	public int getDireccion() {
 		return direccion;
@@ -174,6 +164,12 @@ public void setHembra(boolean genero) {
 	}
 	public void setColision(boolean colision) {
 		this.colision = colision;
+	}
+	public int getContador() {
+		return contador;
+	}
+	public void setContador(int contador) {
+		this.contador = contador;
 	}
 	
 	

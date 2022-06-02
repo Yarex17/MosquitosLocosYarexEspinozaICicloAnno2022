@@ -96,11 +96,11 @@ public class Edificio {
 				}
 
 			}
-
+			//elimina balas cuando colisiona con un mosquito
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
 				for (int i = 0; i < this.mosquitos.size(); i++) {
-					if (this.balas.get(j).colision(this.mosquitos.get(i))) {// falta colocar rango pero hagamos pruebas
+					if (this.balas.get(j).colision(this.mosquitos.get(i))) {
 						this.balas.remove(j);
 						this.mosquitos.remove(i);
 						return;
@@ -109,16 +109,16 @@ public class Edificio {
 				}
 
 			}
-
+			//elimina balas cuando colisiona con un criadero
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
 				for (int i = 0; i < this.criaderos.size(); i++) {
-					if (this.balas.get(j).colision(this.criaderos.get(i))) {// falta colocar rango pero hagamos pruebas
+					if (this.balas.get(j).colision(this.criaderos.get(i))) { 
 						this.balas.remove(j);
 						this.criaderos.remove(i);
 						return;
 					}
-
+ 
 				}
 
 			}
@@ -127,6 +127,7 @@ public class Edificio {
 	}
 
 	public void disparar(int posX, int posY) {
+		//agrega balas cuando el mosquito esta dentro del rango con un mosquito
 		for (int i = 0; i < this.criaderos.size(); i++) {
 			if (this.personaje.Rango(this.criaderos.get(i))) {
 				Bala bala = this.personaje.disparar(posX, posY);

@@ -30,7 +30,7 @@ public class Personaje {
 		this.vida=100;
 		this.cantidaBalas=10000;
 		this.rango=20000.00;
-		try {
+		try { 
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
 			
 			//https://www.flaticon.es/icono-premium/exterminador_4295657?term=exterminador&page=1&position=12&page=1&position=12&related_id=4295657&origin=search		

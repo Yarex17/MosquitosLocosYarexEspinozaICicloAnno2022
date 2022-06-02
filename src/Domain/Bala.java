@@ -51,11 +51,14 @@ public class Bala {
 		return false;
 	} // colision 
 	
+	public void trayectoria(Criadero criadero) {
+	
+	}
 	
 	public void mover() {
 
 	this.inicioY = pendiente * this.inicioX + recta;
-
+ 
 	if (this.inicioX >= this.finalX) {
 		this.inicioX -= this.velocidadDesplasamiento;
 		this.finalX -= this.velocidadDesplasamiento;

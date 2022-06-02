@@ -22,6 +22,7 @@ public class Chikungunya extends Mosquito implements Runnable{
 		void efecto(Personaje personaje) {
 		if (isHembra()) {
 			if (getContador()<20) {
+				//this.thread.st
 			personaje.setDireccion(-1);
 			}else {
 				setContador(0);
@@ -33,7 +34,7 @@ public class Chikungunya extends Mosquito implements Runnable{
 		}
 
 
-
+ 
 	@Override
 	void danio( Personaje personaje) {
 		

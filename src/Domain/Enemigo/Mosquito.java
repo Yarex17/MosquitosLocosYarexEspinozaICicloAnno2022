@@ -12,6 +12,7 @@ public  abstract class Mosquito extends Thread{
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean hembra;
+	protected boolean pico;
 	protected boolean colision;
 	protected int cantidadPicaduras;
 	protected int valor;
@@ -24,14 +25,15 @@ public  abstract class Mosquito extends Thread{
 	
 	public Mosquito(double posX, double posY) {
 		this.cantidadPicaduras=0;
-
+this.pico=false;
 		this.posX = posX;
 		this.posY = posY;
 		this.direccion=1;
-		this.colision=false;
+		this.colision=true;
 		this.cambio=1;
 		this.thread=new Thread(this);
 		this.thread.start();
+		this.contador=1;
 		darGenero();
 		try {
 			this.imagenMosquito=ImageIO.read(getClass().getResourceAsStream("/Assets/Mosquito.png"));
@@ -49,6 +51,7 @@ public  abstract class Mosquito extends Thread{
 if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX()))
 				&& ((this.posY <= personaje.getPosY() + 20) && (this.posY >= personaje.getPosY()))) {
 	if (!isColision()) {
+		setPico(false);
 		if (isHembra()) {
 			danio(personaje);
 			efecto(personaje);
@@ -191,6 +194,12 @@ public void setHembra(boolean genero) {
 	}
 	public void setContador(int contador) {
 		this.contador = contador;
+	}
+	public boolean isPico() {
+		return pico;
+	}
+	public void setPico(boolean pico) {
+		this.pico = pico;
 	}
 	
 	

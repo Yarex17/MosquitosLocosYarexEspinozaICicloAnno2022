@@ -2,6 +2,9 @@ package Domain.Criadero;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import Domain.Enemigo.Chikungunya;
 import Domain.Enemigo.Mosquito;
@@ -10,6 +13,14 @@ public class Chatarra extends Criadero {
 	public Chatarra() {
 super();
 this.valor=10;
+try { 
+	this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Chatarra.png"));
+	
+	//https://www.flaticon.es/icono-premium/exterminador_4295657?term=exterminador&page=1&position=12&page=1&position=12&related_id=4295657&origin=search		
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 }
 	@Override
 	public Mosquito crearMosquito() {
@@ -19,10 +30,7 @@ this.valor=10;
 
 	@Override
 	public void dibujar(Graphics g) {
-		g.setColor(Color.PINK);
-		g.fillRect((int)this.posX, (int)this.posY, 40, 40);
-		g.setColor(Color.BLACK);
-		g.drawOval((int)this.posX, (int)this.posY, 40, 40);
-		
+		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
+
 	}
 }

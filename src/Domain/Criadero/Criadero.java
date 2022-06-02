@@ -1,6 +1,7 @@
 package Domain.Criadero;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -14,7 +15,7 @@ public abstract class Criadero extends Thread {
 	protected int valor;
 	private int  contadorColocadorHuevos;
 	private int cantidadHuevos;
-	
+	protected BufferedImage imagen;
 	private boolean primerMosquito;
 	private Mosquito mosquito;
 	public Criadero() {

@@ -26,6 +26,7 @@ public class Juego {
 	}
 
 	public void disparar(int posX, int posY) {// problemas
+		
 		this.nivel.getCuadras().get(0).disparar(posX, posY);
 		this.nivel.getCuadras().get(0).getEdificio1().disparar(posX, posY);
 		this.nivel.getCuadras().get(0).getEdificio2().disparar(posX, posY);

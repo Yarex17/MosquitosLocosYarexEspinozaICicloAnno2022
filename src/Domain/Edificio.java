@@ -20,10 +20,12 @@ public class Edificio  {
 	private ArrayList<Mosquito> mosquitos;
 	private BufferedImage habitacion;
 	private BufferedImage puerta;
+	private int nivel;
 	
-	public Edificio() {
-		this.posYPuerta=(Math.random()*18*40);
-		this.posXPuerta=(Math.random()*13*40);
+	public Edificio(double posXPuerta,double posYPuerta,int nivel) {
+		this.nivel=nivel;
+		this.posYPuerta=posYPuerta;
+		this.posXPuerta=posXPuerta;
 		this.posAntX=posXPuerta;
      	this.posAntY=posYPuerta;
         this.entra=false;
@@ -42,6 +44,7 @@ public class Edificio  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.nivel=nivel;
 	}
 	public void collison(Personaje personaje) {
 		if (((this.posXPuerta < personaje.getPosX()+ 40 && this.posXPuerta >= personaje.getPosX())
@@ -62,17 +65,21 @@ public class Edificio  {
 		
 		}
 	}
-	
-
+	 
+	 public void generarMosquito() {
+			for (int i = 0; i < this.criaderos.size(); i++) {
+				this.criaderos.get(i).generarMosquitos(mosquitos);
+			}
+		}
 	public void generarCriadero() {
-		for (int i = 0; i < 1; i++) {
-			if (criaderos.size()<=5) {
+		for (int i = 0; i < 2*nivel; i++) {
+		
 				criaderos.add(FabricaCriaderos.crearCriaderoInterno((int) (Math.random()*3+1)));
 
 			}
-			}
 		
 	}
+	
 public void dibujar(Graphics g) {
 	if (isEntra()) {
 		g.drawImage(this.habitacion, (int) this.posX, (int) this.posY, null);

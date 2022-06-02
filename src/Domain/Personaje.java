@@ -20,8 +20,9 @@ public class Personaje {
 	private int cantidaBalas;
 	private double rango;
 	private BufferedImage imagen;
-	
+	private int velocidad;
 	public Personaje(int posX, int posY) {
+		this.velocidad=5;
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
@@ -110,19 +111,19 @@ if (((this.posX < x+ 40 && this.posX >= x)
 	
 
 	public void moverDerecha() {
-		this.posX+=4;
+		this.posX+=getVelocidad();
 	}
 	
 	public void moverIzquierda() {
-		this.posX-=4;
+		this.posX-=getVelocidad();
 	}
 	
 	public void moverArriba() {
-		this.posY-=4;
+		this.posY-=getVelocidad();
 	}
 	
 	public void moverAbajo() {
-		this.posY+=4;
+		this.posY+=getVelocidad();
 	}
 
 	public int getPosX() {
@@ -147,6 +148,14 @@ if (((this.posX < x+ 40 && this.posX >= x)
 
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}
 
 	

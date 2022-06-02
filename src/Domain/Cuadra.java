@@ -22,36 +22,27 @@ private ArrayList<Mosquito> mosquitos;
 		
         generarEntradas();
         generarCriadero();
-       //agregar();
-
+      
 	}
+ public void generarMosquito() {
+	for (int i = 0; i < this.criaderos.size(); i++) {
+		this.criaderos.get(i).generarMosquitos(mosquitos);
+	}
+}
 
-//	public void generarMosquito() {
-//		for (int i = 0; i < this.criaderos.size(); i++) {
-//
-//			this.criaderos.get(i).generarMosquitos(mosquitos);
-//
-//		}
-//	}
 	public void generarEntradas() {
-		for (int i = 0; i < 3; i++) {
-			this.edificios.add(new Edificio());
-		}
+		this.edificios.add(new Edificio(100,550,this.nivel));
+		this.edificios.add(new Edificio(400,100,this.nivel));
+		this.edificios.add(new Edificio(720,300,this.nivel));
 	}
 	
 	public void generarCriadero() {
 	
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3*this.nivel; i++) {
 		this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random()*3+1)));
 	}
 		
 	}
-	public void generarMosquitos() {
-		for (int i = 0; i <criaderos.size(); i++) {
-			this.criaderos.get(i).generarMosquitos(mosquitos);
-		}
-	}
- 
 
 	public void dibujar(Graphics g) {
 	

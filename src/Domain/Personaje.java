@@ -28,7 +28,7 @@ public class Personaje {
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
-		this.cantidaBalas=10000;
+		this.cantidaBalas=10;
 		this.rango=20000.00;
 		try { 
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
@@ -68,6 +68,7 @@ public class Personaje {
 				|| (this.posX + 40 > cargador.getPosX() && this.posX <= cargador.getPosX()))
 				&& (this.posY < cargador.getPosY() + 40 && this.posY >= cargador.getPosY()
 						|| (this.posY + 40 > cargador.getPosY() && this.posY <= cargador.getPosY()))) {
+			setCantidaBalas(10);
 			return true;
 		} else {
 			return false;

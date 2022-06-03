@@ -32,7 +32,7 @@ public void contadorSegundos() {
 			
 			if (getContador() == 1) {
 				for (int i = 0; i < cantidadPicaduras; i++) {
-					System.out.println(i);
+					
 					personaje.setVelocidad(personaje.getVelocidad()-1);
 				}
 			}
@@ -40,7 +40,7 @@ public void contadorSegundos() {
 			if (getContador() == 10) {
 				setContador(1);
 				personaje.setVelocidad(6);
-				setPico(false);
+			
 				//System.out.println(this.thread.isInterrupted());
 			}
 		}
@@ -58,7 +58,7 @@ public void contadorSegundos() {
 	
 	@Override
 	public void run() {
-	while (contador!=10&&isPico()) {
+	while (contador!=10) {
 		contadorSegundos();
 		try {
 			this.thread.sleep(500);

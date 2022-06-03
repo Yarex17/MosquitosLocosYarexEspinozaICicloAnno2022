@@ -275,4 +275,12 @@ public class Edificio {
 		this.mosquitos = mosquitos;
 	}
 
+	public ArrayList<Cargador> getCargadores() {
+		return cargadores;
+	}
+
+	public void setCargadores(ArrayList<Cargador> cargadores) {
+		this.cargadores = cargadores;
+	}
+
 }

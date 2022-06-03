@@ -2,14 +2,19 @@ package Domain;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.imageio.ImageIO;
 
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
 public class Cuadra {
+	private double posY, posX;
 	private Edificio edificio1;
 	private Edificio edificio2;
 	private ArrayList<Criadero> criaderos;
@@ -18,18 +23,45 @@ public class Cuadra {
 	private int nivel;
 	private ArrayList<Cargador> cargadores;
 	private Personaje personaje;
+	private BufferedImage imagen;
 
 	public Cuadra(int nivel, Personaje personaje) {
 		this.personaje = personaje;
 		this.nivel = nivel;
-		this.edificio1 = new Edificio(100, 550, this.nivel, personaje);
-		this.edificio2 = new Edificio(400, 100, this.nivel, personaje);
+		this.posY = 0;
+		this.posX = 0;
+		this.edificio1 = new Edificio(639, 187, this.nivel, personaje);
+		this.edificio2 = new Edificio(82, 492, this.nivel, personaje);
 		this.criaderos = new ArrayList<Criadero>();
 		this.mosquitos = new ArrayList<Mosquito>();
 		this.balas = new ArrayList<Bala>();
 		this.cargadores = new ArrayList<Cargador>();
 		generarCriadero();
+    try {
+		this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
+//		try {
+//			switch (this.nivel) {
+//			case 1:
+//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nvel1.png"));
+//				break;
+//			case 2:
+//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
+//				break;
+//			case 3:
+//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel3.png"));
+//				break;
+//
+//			default:
+//				break;
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 	}
 
 	public void generarMosquito() {
@@ -67,14 +99,18 @@ public class Cuadra {
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
+				this.edificio1.getCriaderos().remove(0);
+				this.edificio2.getCriaderos().remove(0);
 					this.cargadores.remove(i);
+					
 				}
 
 			}
 		
 			if (this.personaje.getCantidaBalas() <= 4) {
-				if (this.cargadores.size() < 1) {
+				if (this.cargadores.size() ==0) {
 					this.cargadores.add(new Cargador());
+					
 				}
 
 			}
@@ -140,20 +176,7 @@ public class Cuadra {
 
 	public void dibujar(Graphics g) {
 
-		switch (getNivel()) {
-		case 1:
-			g.setColor(Color.RED);
-			break;
-		case 2:
-			g.setColor(Color.blue);
-			break;
-		case 3:
-			g.setColor(Color.ORANGE);
-			break;
-
-		default:
-			break;
-		}
+		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 
 		g.fillRect(0, 0, 800, 600);
 
@@ -226,5 +249,6 @@ public class Cuadra {
 	public void setEdificio2(Edificio edificio2) {
 		this.edificio2 = edificio2;
 	}
+	
 
 }

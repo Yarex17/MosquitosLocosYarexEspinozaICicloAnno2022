@@ -18,6 +18,7 @@ public abstract class Criadero extends Thread {
 	protected BufferedImage imagen;
 	private boolean primerMosquito;
 	private Mosquito mosquito;
+	
 	public Criadero() {
 		this.huevos=new ArrayList<Huevo>();
 		this.huevos.add(new Huevo(10));
@@ -39,11 +40,12 @@ public abstract class Criadero extends Thread {
 				//si el huevo eclosiona en el tiempo indicado  crear un mosquito 
 				this.mosquito = crearMosquito();
 				
-				mosquitos.add(mosquito);
+				
 				if (primerMosquito && !this.mosquito.isHembra()) {// esto lo hize para asegurar que el primer mosquito que se crea se hembra 
 					this.mosquito.setHembra(true);
 					primerMosquito=false;
 				}
+				mosquitos.add(mosquito);
 				if (this.mosquito.isHembra()) {
 					for (int j = 0; j <(int)(Math.random()*4+2); j++) {// este in me agrega los mosquitos dentro del rango establecido 
 						this.huevos.add(new Huevo());

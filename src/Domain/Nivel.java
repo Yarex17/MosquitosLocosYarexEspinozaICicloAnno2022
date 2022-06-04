@@ -17,7 +17,7 @@ this.cuadras.add(new Cuadra(nivel,this.personaje));
 public void subirNivel() {
 	
 		
-		if (getNivel()<3&& this.cuadras.get(0).getCriaderos().size()==0 && this.cuadras.get(0).getEdificio1().getCriaderos().size()==0&& this.cuadras.get(0).getEdificio2().getCriaderos().size()==0) {
+		if ((getNivel()<3)&&( this.cuadras.get(0).getCriaderos().size()==0 && this.cuadras.get(0).getEdificio1().getCriaderos().size()==0)&& (this.cuadras.get(0).getEdificio2().getCriaderos().size()==0)) {
 			setNivel(getNivel()+1);
 			this.cuadras.remove(0);
 			this.cuadras.add(new Cuadra(getNivel(),this.personaje));

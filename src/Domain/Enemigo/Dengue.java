@@ -47,9 +47,6 @@ private int picaduras;
 	public void setPicaduras(int picaduras) {
 		this.picaduras = picaduras;
 	}
-
-	
-
 	
 
 }

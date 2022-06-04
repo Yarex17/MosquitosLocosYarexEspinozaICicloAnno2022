@@ -23,9 +23,11 @@ public class Cuadra {
 	private int nivel;
 	private ArrayList<Cargador> cargadores;
 	private Personaje personaje;
-	private BufferedImage imagen;
+	protected BufferedImage imagen;
 
 	public Cuadra(int nivel, Personaje personaje) {
+		
+
 		this.personaje = personaje;
 		this.nivel = nivel;
 		this.posY = 0;
@@ -37,31 +39,25 @@ public class Cuadra {
 		this.balas = new ArrayList<Bala>();
 		this.cargadores = new ArrayList<Cargador>();
 		generarCriadero();
-    try {
-		this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+    
+		try {
+			switch (this.nivel) {
+			case 1:
+				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nvel1.png"));
+				break;
+			case 2:
+				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
+				break;
+			case 3:
+				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel3.png"));
+				break;
 
-//		try {
-//			switch (this.nivel) {
-//			case 1:
-//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nvel1.png"));
-//				break;
-//			case 2:
-//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
-//				break;
-//			case 3:
-//				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel3.png"));
-//				break;
-//
-//			default:
-//				break;
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	public void generarMosquito() {
@@ -99,8 +95,13 @@ public class Cuadra {
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
-				this.edificio1.getCriaderos().remove(0);
-				this.edificio2.getCriaderos().remove(0);
+					for (int j = 0; j < this.edificio1.getCriaderos().size(); j++) {
+						this.edificio1.getCriaderos().remove(j);
+					}
+					for (int j = 0; j < this.edificio2.getCriaderos().size(); j++) {
+						this.edificio2.getCriaderos().remove(j);
+					}
+				//this.edificio2.getCriaderos().remove(0);
 					this.cargadores.remove(i);
 					
 				}
@@ -178,7 +179,7 @@ public class Cuadra {
 
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 
-		g.fillRect(0, 0, 800, 600);
+
 
 		if (this.edificio1.isEntra()) {
 			this.edificio1.dibujar(g);

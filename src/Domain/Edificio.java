@@ -198,7 +198,6 @@ public class Edificio {
 		} else {
 			// g.drawImage(this.habitacion, (int) this.posX, (int) this.posY, null);
 
-			g.drawImage(this.puerta, (int) this.posXPuerta, (int) this.posYPuerta, null);
 		}
 
 	}

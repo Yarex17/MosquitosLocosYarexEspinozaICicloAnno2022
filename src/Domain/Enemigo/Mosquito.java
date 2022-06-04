@@ -8,7 +8,10 @@ import javax.imageio.ImageIO;
 
 import Domain.Personaje;
 
-public  abstract class Mosquito extends Thread{
+public  abstract class Mosquito implements Runnable{
+	
+	
+	
 	protected double posX, posY;
 	protected int direccion;
 	protected boolean hembra;
@@ -16,7 +19,6 @@ public  abstract class Mosquito extends Thread{
 	protected int cantidadPicaduras;
 	protected int valor;
 	private Thread thread;
-	
 	private int cambio;
 	protected int contador;
 	protected BufferedImage imagenMosquito;
@@ -30,8 +32,10 @@ public  abstract class Mosquito extends Thread{
 		this.direccion=1;
 		this.colision=true;
 		this.cambio=1;
+		
 		this.thread=new Thread(this);
 		this.thread.start();
+		
 		this.contador=1;
 		darGenero();
 		try {
@@ -51,8 +55,10 @@ if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX(
 				&& ((this.posY <= personaje.getPosY() + 20) && (this.posY >= personaje.getPosY()))) {
 	if (!isColision()) {
 		if (isHembra()) {
+			setColision(true);
 			danio(personaje);
 			efecto(personaje);
+			setColision(true);
 	}
 		setColision(true);
 	}	
@@ -107,11 +113,11 @@ switch (getCambio()) {
 
  @Override
 public void run() {
+	 
 while (true) {
 	cambiarDireccion();
 	
 	try {
-		//thread.sleep(60);
 		this.thread.sleep(1500);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
@@ -119,11 +125,11 @@ while (true) {
 	}
 	
 }
+
 }
 
 
 public void dibujar(Graphics g) {
-	//g.drawRect((int) this.posX, (int) this.posY, 20, 20);
 	g.drawString(isHembra()+"", (int) this.posX, (int) this.posY);
 	g.drawImage(this.imagenMosquito, (int) this.posX, (int) this.posY, null);
 }

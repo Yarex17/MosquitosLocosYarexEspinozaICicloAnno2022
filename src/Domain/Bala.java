@@ -25,6 +25,7 @@ public class Bala {
 		this.pendiente = (this.finalY - this.inicioY) / (this.finalX - this.inicioX);
 		
 		this.recta = (this.inicioY - (this.pendiente * this.inicioX));
+		
 		try {
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Bala.png"));
 //https://www.flaticon.es/icono-gratis/nube-de-co2_2893005?term=nube%20%20verde&related_id=2893005
@@ -56,21 +57,40 @@ public class Bala {
 	}
 	
 	public void mover() {
+		
+			this.inicioY = ((this.finalY - this.inicioY) * 2)
+					/ (Math.sqrt(Math.pow((finalX - inicioX), 2) + Math.pow((this.finalY - this.inicioX), 2)));
 
-	this.inicioY = pendiente * this.inicioX + recta;
- 
-	if (this.inicioX >= this.finalX) {
-		this.inicioX -= this.velocidadDesplasamiento;
-		this.finalX -= this.velocidadDesplasamiento;
-	}
-	if (this.inicioX <= this.finalX) {
-		this.inicioX += this.velocidadDesplasamiento;
-		this.finalX += this.velocidadDesplasamiento;
-	}
+		
+		if (this.inicioX >= this.finalX) {
+			this.inicioX -= this.velocidadDesplasamiento;
+     		this.finalY -= this.velocidadDesplasamiento;
+		}
+
+		if (this.inicioX <= this.finalX) {
+			this.inicioX += this.velocidadDesplasamiento;
+     		this.finalY += this.velocidadDesplasamiento;
+		}
+
+		
+		
+
+//	this.inicioY = pendiente * this.inicioX + recta;
+// if (this.inicioY==inicioY) {
+//	
+//}
+//	if (this.inicioX >= this.finalX) {
+//		this.inicioX -= this.velocidadDesplasamiento;
+//		this.finalX -= this.velocidadDesplasamiento;
+//	}
+//	if (this.inicioX <= this.finalX) {
+//		this.inicioX += this.velocidadDesplasamiento;
+//		this.finalX += this.velocidadDesplasamiento;
+//	}
 
 		
 
-	} // mover
+} // mover
 	
 
 	

@@ -23,25 +23,16 @@ public class Zika extends Mosquito {
 	@Override
 	
 	void efecto(Personaje personaje) {
-	
 
-		if (isHembra()) {
-			
-			//System.out.println(th);
-			if (getContador() == 0) {
-				for (int i = 0; i < cantidadPicaduras; i++) {
-					
-					personaje.setVelocidad(2);
-				}
-			}
-			
-			if (getContador() == 10) {
-				setContador(1);
-				personaje.setVelocidad(6);
-			
-			}
-		}
+		if (isHembra()&&isColision()) {
 		
+				for (int i = 0; i < personaje.getPicadurazika(); i++) {
+
+					personaje.setVelocidad(personaje.getVelocidad() / 2);
+				}	
+			
+		}
+
 	}
 
 	@Override
@@ -49,7 +40,8 @@ public class Zika extends Mosquito {
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-15);
-				setCantidadPicaduras(getCantidadPicaduras()+1);
+				personaje.setPicadurazika(personaje.getPicadurazika()+1);
+				
 				} 
 		}		
 	

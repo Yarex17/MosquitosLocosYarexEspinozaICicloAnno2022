@@ -16,8 +16,10 @@ public  abstract class Mosquito implements Runnable{
 	protected int direccion;
 	protected boolean hembra;
 	protected boolean colision;
-	protected int cantidadPicaduras;
+	
 	protected int valor;
+	
+
 	private Thread thread;
 	private int cambio;
 	protected int contador;
@@ -25,7 +27,7 @@ public  abstract class Mosquito implements Runnable{
 	
 	
 	public Mosquito(double posX, double posY) {
-		this.cantidadPicaduras=0;
+
 
 		this.posX = posX;
 		this.posY = posY;
@@ -58,7 +60,7 @@ if (((this.posX <= personaje.getPosX() + 20) && (this.posX >= personaje.getPosX(
 			setColision(true);
 			danio(personaje);
 			efecto(personaje);
-			setColision(true);
+			
 	}
 		setColision(true);
 	}	
@@ -175,12 +177,7 @@ public void setHembra(boolean genero) {
 		this.posY = posY;
 	}
 	
-	public int getCantidadPicaduras() {
-		return cantidadPicaduras;
-	}
-	public void setCantidadPicaduras(int cantidadPicaduras) {
-		this.cantidadPicaduras = cantidadPicaduras;
-	}
+
 	public int getDireccion() {
 		return direccion;
 	}

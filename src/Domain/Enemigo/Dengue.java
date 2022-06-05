@@ -3,11 +3,11 @@ package Domain.Enemigo;
 import Domain.Personaje;
 
 public class Dengue extends Mosquito{
-private int picaduras;
+
 	public Dengue(double posX, double posY) {
 		
 		super(posX, posY);
-		this.picaduras=0;
+		
 		if (hembra) {
 			this.valor=2;
 		}else {
@@ -18,7 +18,7 @@ private int picaduras;
 	@Override
 	void efecto(Personaje personaje) {
 		if (isHembra()) {
-			if (getPicaduras()==2) {
+			if (personaje.getPicaduraDegue()==2) {
 				personaje.setVida(0);
 			}
 		}
@@ -30,23 +30,11 @@ private int picaduras;
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-5);
-				setCantidadPicaduras(getCantidadPicaduras()+1);
+				personaje.setPicaduraDegue(personaje.getPicaduraDegue()+1);
 			} 
 		}
 
 
-
-
-	public int getPicaduras() {
-		return picaduras;
-	}
-
-
-
-
-	public void setPicaduras(int picaduras) {
-		this.picaduras = picaduras;
-	}
 	
 
 }

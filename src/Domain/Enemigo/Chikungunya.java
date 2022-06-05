@@ -2,13 +2,12 @@ package Domain.Enemigo;
 
 import Domain.Personaje;
 
-public class Chikungunya extends Mosquito implements Runnable{
-	private Thread thread;
+public class Chikungunya extends Mosquito {
+
 	public Chikungunya(double posX, double posY) {
 		
 		super(posX, posY);
-		this.thread=new Thread(this);
-		this.thread.start();
+		
 		if (hembra) {
 			this.valor=4;
 		}else {
@@ -27,7 +26,7 @@ public class Chikungunya extends Mosquito implements Runnable{
 			}else {
 				setContador(0);
 				personaje.setDireccion(1);
-				this.thread.interrupt();
+			
 			}
 		}
 			
@@ -40,26 +39,9 @@ public class Chikungunya extends Mosquito implements Runnable{
 		
 			if (isHembra()) {
 				personaje.setVida(personaje.getVida()-10);
-				setCantidadPicaduras(getCantidadPicaduras()+1);
-			} 
-		
-		
-	}
-	@Override
-	public void run() {
-		while (true) {
-			contadorSegundos();
-			
-			try {
-				this.thread.sleep(1000);
 				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	}
-
+			} 
+	
 	}
 
 	

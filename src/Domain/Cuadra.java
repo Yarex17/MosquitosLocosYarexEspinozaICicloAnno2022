@@ -118,6 +118,9 @@ public class Cuadra {
 
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
+				for (int i = 0; i < this.criaderos.size(); i++) {
+					this.balas.get(j).trayectoria(this.criaderos.get(i));
+				}
 				for (int i = 0; i < this.mosquitos.size(); i++) {
 					if (this.balas.get(j).colision(this.mosquitos.get(i))) {// falta colocar rango pero hagamos pruebas
 						this.balas.remove(j);

@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
 
-public class Personaje {
+public class Personaje extends Thread{
 
 	private double posX;
 	private double posY;
@@ -22,7 +22,23 @@ public class Personaje {
 	private double rango;
 	private BufferedImage imagen;
 	private int velocidad;
+	
+	private boolean colisionZika;
+	private boolean colisionChinkunguya;
+	
+	private int picaduraDegue;
+	private int picadurazika;
+	
+	private Thread thread;
+	
+	
 	public Personaje(double posX, double posY) {
+		this.thread=new Thread();
+		this.thread.start();
+		this.colisionChinkunguya=false;
+		this.colisionZika=false;
+		this.picaduraDegue=0;
+		 this.picadurazika=0;
 		this.direccion=1;
 		this.velocidad=6;
 		this.posX=posX;
@@ -173,6 +189,66 @@ public class Personaje {
 		this.direccion = direccion;
 	}
 
-	
+	public boolean isColisionZika() {
+		return colisionZika;
+	}
+
+	public void setColisionZika(boolean colisionZika) {
+		this.colisionZika = colisionZika;
+	}
+
+	public boolean isColisionChinkunguya() {
+		return colisionChinkunguya;
+	}
+
+	public void setColisionChinkunguya(boolean colisionChinkunguya) {
+		this.colisionChinkunguya = colisionChinkunguya;
+	}
+
+	public int getPicaduraDegue() {
+		return picaduraDegue;
+	}
+
+	public void setPicaduraDegue(int picaduraDegue) {
+		this.picaduraDegue = picaduraDegue;
+	}
+
+	public int getPicadurazika() {
+		return picadurazika;
+	}
+
+	public void setPicadurazika(int picadurazika) {
+		this.picadurazika = picadurazika;
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			if (isColisionZika()) {
+				try {
+				
+					this.thread.sleep(60);
+					setColisionZika(false);
+				
+					setVelocidad(6);
+					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+							}
+			
+			
+			if (colisionChinkunguya) {
+				try {
+					this.thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
 } // fin clase
 

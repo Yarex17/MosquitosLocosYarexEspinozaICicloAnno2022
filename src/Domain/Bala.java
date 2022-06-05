@@ -1,12 +1,12 @@
 package Domain;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.html.parser.Entity;
+
 
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
@@ -16,12 +16,13 @@ public class Bala {
 	private double inicioX, inicioY, finalX, finalY, pendiente, recta, velocidadDesplasamiento,rango;
 	protected BufferedImage imagen;
 	public Bala(double inicioX, double inicioY, double finalX, double finalY) {
-		this.velocidadDesplasamiento = 1;
+		this.velocidadDesplasamiento =2;
 		this.rango=50000.00;
 		this.inicioX = inicioX;
 		this.inicioY = inicioY;
 		this.finalX = finalX;
 		this.finalY = finalY;
+		
 		this.pendiente = (this.finalY - this.inicioY) / (this.finalX - this.inicioX);
 		
 		this.recta = (this.inicioY - (this.pendiente * this.inicioX));
@@ -53,42 +54,54 @@ public class Bala {
 	} // colision 
 	
 	public void trayectoria(Criadero criadero) {
-	
+		double Y=0;
+		double X=0;
+		Y= pendiente * criadero.getPosX() + recta;
+		X= (Y-recta)/pendiente;
+		//System.out.println(X+","+Y);
+		//System.out.println(criadero.getPosX()+","+criadero.getPosY()+"Criadero");}
+		//&&(X>criadero.getPosX()&&X<criadero.getPosX()+20)
+		if ((Y>criadero.getPosY()&&Y<criadero.getPosY()+40)) {
+			System.out.println(X+","+Y);
+			System.out.println(criadero.getPosX()+","+criadero.getPosY()+"Criadero");
+			Y=0;
+			System.out.println("entra");
+		}
 	}
 	
 	public void mover() {
 		
-			this.inicioY = ((this.finalY - this.inicioY) * 2)
-					/ (Math.sqrt(Math.pow((finalX - inicioX), 2) + Math.pow((this.finalY - this.inicioX), 2)));
-
+		
+//		double hipotenusa=0;
+//		hipotenusa=Math.sqrt(Math.pow((finalX - inicioX), 2) + Math.pow((this.finalY - this.inicioX), 2));
+//			this.inicioY = ((( this.finalX - this.inicioX)*this.inicioY)/hipotenusa)+ velocidadDesplasamiento ;
+//
+//		
+//		if (this.inicioX >= this.finalX) {
+//			this.inicioX -= this.velocidadDesplasamiento;
+//     		this.finalY -= this.velocidadDesplasamiento;
+//		}
+//
+//		if (this.inicioX <= this.finalX) {
+//			this.inicioX += this.velocidadDesplasamiento;
+//     		this.finalY += this.velocidadDesplasamiento;
+//		}
+//
+//		
+		this.inicioY = pendiente * this.inicioX + recta;
+		// a la y le voy tirando la x y se calcula y ecuacon de la recta
+		
+		this.inicioY = pendiente * this.inicioX + recta;
+		
 		
 		if (this.inicioX >= this.finalX) {
 			this.inicioX -= this.velocidadDesplasamiento;
-     		this.finalY -= this.velocidadDesplasamiento;
+			this.finalX -= this.velocidadDesplasamiento;
 		}
-
 		if (this.inicioX <= this.finalX) {
 			this.inicioX += this.velocidadDesplasamiento;
-     		this.finalY += this.velocidadDesplasamiento;
-		}
-
-		
-		
-
-//	this.inicioY = pendiente * this.inicioX + recta;
-// if (this.inicioY==inicioY) {
-//	
-//}
-//	if (this.inicioX >= this.finalX) {
-//		this.inicioX -= this.velocidadDesplasamiento;
-//		this.finalX -= this.velocidadDesplasamiento;
-//	}
-//	if (this.inicioX <= this.finalX) {
-//		this.inicioX += this.velocidadDesplasamiento;
-//		this.finalX += this.velocidadDesplasamiento;
-//	}
-
-		
+			this.finalX += this.velocidadDesplasamiento;
+		}	
 
 } // mover
 	

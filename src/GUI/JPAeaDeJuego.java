@@ -28,6 +28,7 @@ private BufferedImage buffer;
 	private long time=1000/FPS;
 	private Thread thread;
 	private long espera;
+	private boolean inicar;
 public JPAeaDeJuego() {
 	
 	this.setLayout(null);
@@ -37,9 +38,12 @@ public JPAeaDeJuego() {
 	this.setRequestFocusEnabled(true);
 	this.addKeyListener(this);
 	this.addMouseListener(this);
+	this.inicar=false;
 	this.juego=new Juego();
-
 	//this.setVisible(true);
+}
+public void iniciar() {
+	
 }
 public void addNotify() {
 	super.addNotify();

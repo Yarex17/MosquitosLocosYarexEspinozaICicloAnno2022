@@ -23,7 +23,7 @@ try {
 }
 }
 	@Override
-	public Mosquito crearMosquito() {
+	public Mosquito tipoMosquito() {
 		// TODO Auto-generated method stub
 		return new Chikungunya(this.posX, this.posY);
 	}

@@ -25,7 +25,7 @@ this.valor=10;
 
 }
 	@Override
-	public Mosquito crearMosquito() {
+	public Mosquito tipoMosquito() {
 		return new Chikungunya(this.posX, this.posY);
 	}
 

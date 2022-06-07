@@ -78,17 +78,21 @@ public class JIFLogin extends JPanel implements ActionListener {
 		jscrollPane.setBounds(250, 250, 270, 250);
 		this.add(jscrollPane);
 		
-		this.jpAeaDeJuego=new JPAeaDeJuego();
-		//this.add(jpAeaDeJuego);
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.jbIniciar) {
-			this.jFrame.getContentPane().remove(this);
-			this.jFrame.add(new JPAeaDeJuego());
-			this.jFrame.invalidate();
-			this.jFrame.validate();
+//			this.jFrame.getContentPane().remove(this);
+//			//this.jFrame.add(new JPAeaDeJuego());
+//			
+//			this.jFrame.invalidate();
+//			this.jFrame.validate();
+			this.jpAeaDeJuego=new JPAeaDeJuego();
+			this.add(jpAeaDeJuego);
+			System.out.println("entra");
+			this.jpAeaDeJuego.iniciar();
 		}
 
 	}

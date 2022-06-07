@@ -27,7 +27,7 @@ public class Balde extends Criadero {
 	}
 
 	@Override
-	public Mosquito crearMosquito() {
+	public Mosquito tipoMosquito() {
 		
 		return new Dengue(this.posX, this.posY);
 	}

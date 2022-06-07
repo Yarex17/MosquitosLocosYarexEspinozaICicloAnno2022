@@ -24,7 +24,7 @@ try {
 }
 } 
 	@Override
-	public Mosquito crearMosquito() {
+	public Mosquito tipoMosquito() {
 		// TODO Auto-generated method stub
 		return new Dengue(this.posX, this.posY);
 	}

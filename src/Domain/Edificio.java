@@ -25,9 +25,12 @@ public class Edificio {
 	private int nivel;
 	private Personaje personaje;
 
+
 	public Edificio(double posXPuerta, double posYPuerta, int nivel, Personaje personaje) {
+	
 		this.nivel = nivel;
 		this.personaje = personaje;
+
 		this.posYPuerta = posYPuerta;
 		this.posXPuerta = posXPuerta;
 		this.posAntX = posXPuerta;
@@ -94,6 +97,7 @@ public class Edificio {
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
+					
 					this.cargadores.remove(i);
 				}
 
@@ -111,6 +115,7 @@ public class Edificio {
 				for (int i = 0; i < this.mosquitos.size(); i++) {
 					if (this.balas.get(j).colision(this.mosquitos.get(i))) {
 						this.balas.remove(j);
+						personaje.setPuntos(personaje.getPuntos()+this.mosquitos.get(i).getValor());
 						this.mosquitos.remove(i);
 						return;
 					}
@@ -124,6 +129,7 @@ public class Edificio {
 				for (int i = 0; i < this.criaderos.size(); i++) {
 					if (this.balas.get(j).colision(this.criaderos.get(i))) { 
 						this.balas.remove(j);
+						personaje.setPuntos(personaje.getPuntos()+this.criaderos.get(i).getValor());
 						this.criaderos.remove(i);
 						return;
 					}

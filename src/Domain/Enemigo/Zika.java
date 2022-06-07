@@ -24,8 +24,8 @@ public class Zika extends Mosquito {
 	
 	void efecto(Personaje personaje) {
 
-		if (isHembra()&&isColision()) {
-		
+		if (isHembra()) {
+		//personaje.setColisionZika(true);
 				for (int i = 0; i < personaje.getPicadurazika(); i++) {
 
 					personaje.setVelocidad(personaje.getVelocidad() / 2);
@@ -39,6 +39,9 @@ public class Zika extends Mosquito {
 	void danio( Personaje personaje) {
 		
 			if (isHembra()) {
+				
+				personaje.setColisionZika(true);
+				
 				personaje.setVida(personaje.getVida()-15);
 				personaje.setPicadurazika(personaje.getPicadurazika()+1);
 				

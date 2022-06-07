@@ -24,10 +24,9 @@ public class Cuadra {
 	private ArrayList<Cargador> cargadores;
 	private Personaje personaje;
 	protected BufferedImage imagen;
-
+private Cuadra cuadra;
 	public Cuadra(int nivel, Personaje personaje) {
 		
-
 		this.personaje = personaje;
 		this.nivel = nivel;
 		this.posY = 0;
@@ -92,18 +91,20 @@ public class Cuadra {
 				this.mosquitos.get(i).movimiento();
 				this.mosquitos.get(i).colision(personaje);
 			}
+			
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
-					for (int j = 0; j < this.edificio1.getCriaderos().size(); j++) {
-						this.edificio1.getCriaderos().remove(j);
-					}
-					for (int j = 0; j < this.edificio2.getCriaderos().size(); j++) {
-						this.edificio2.getCriaderos().remove(j);
-					}
-				//this.edificio2.getCriaderos().remove(0);
-					this.cargadores.remove(i);
 					
+					for (int j = 0; j < this.edificio1.getCargadores().size(); j++) {
+						this.edificio1.getCargadores().remove(j);
+					}
+					for (int j = 0; j < this.edificio2.getCargadores().size(); j++) {
+						this.edificio2.getCargadores().remove(j);
+					}
+				
+					
+					this.cargadores.remove(i);
 				}
 
 			}
@@ -118,12 +119,17 @@ public class Cuadra {
 
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
+				
+				if (this.balas.get(j).getInicioY()==0||this.balas.get(j).getInicioY()==600||this.balas.get(j).getInicioX()==0||this.balas.get(j).getInicioX()==700) {
+					this.balas.remove(j);
+				}
 				for (int i = 0; i < this.criaderos.size(); i++) {
 					this.balas.get(j).trayectoria(this.criaderos.get(i));
 				}
 				for (int i = 0; i < this.mosquitos.size(); i++) {
 					if (this.balas.get(j).colision(this.mosquitos.get(i))) {// falta colocar rango pero hagamos pruebas
 						this.balas.remove(j);
+						personaje.setPuntos(personaje.getPuntos()+this.mosquitos.get(i).getValor());
 						this.mosquitos.remove(i);
 						return;
 					}
@@ -137,7 +143,9 @@ public class Cuadra {
 				for (int i = 0; i < this.criaderos.size(); i++) {
 					if (this.balas.get(j).colision(this.criaderos.get(i))) {// falta colocar rango pero hagamos pruebas
 						this.balas.remove(j);
+						personaje.setPuntos(personaje.getPuntos()+this.criaderos.get(i).getValor());
 						this.criaderos.remove(i);
+						
 						return;
 					}
 
@@ -252,6 +260,14 @@ public class Cuadra {
 
 	public void setEdificio2(Edificio edificio2) {
 		this.edificio2 = edificio2;
+	}
+
+	public ArrayList<Cargador> getCargadores() {
+		return cargadores;
+	}
+
+	public void setCargadores(ArrayList<Cargador> cargadores) {
+		this.cargadores = cargadores;
 	}
 	
 

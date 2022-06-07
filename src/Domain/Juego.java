@@ -1,14 +1,7 @@
 package Domain;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-import Domain.Criadero.Balde;
-import Domain.Criadero.Criadero;
-import Domain.Enemigo.Dengue;
-import Domain.Enemigo.Mosquito;
-import Domain.Enemigo.Zika;
 
 public class Juego {
 	private Personaje personaje;

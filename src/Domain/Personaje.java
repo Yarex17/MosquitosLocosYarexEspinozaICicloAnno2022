@@ -21,7 +21,7 @@ public class Personaje extends Thread{
 	private int cantidaBalas;
 	private double rango;
 	private BufferedImage imagen;
-	private int velocidad;
+	private double velocidad;
 	
 	private boolean colisionZika;
 	private boolean colisionChinkunguya;
@@ -33,14 +33,13 @@ public class Personaje extends Thread{
 	
 	
 	public Personaje(double posX, double posY) {
-		this.thread=new Thread();
-		this.thread.start();
+	
 		this.colisionChinkunguya=false;
 		this.colisionZika=false;
 		this.picaduraDegue=0;
 		 this.picadurazika=0;
 		this.direccion=1;
-		this.velocidad=6;
+		this.velocidad=8.0;
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
@@ -54,6 +53,8 @@ public class Personaje extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.thread=new Thread(this);
+		this.thread.start();
 	} // constructor	
 	
 	public int getCantidaBalas() {
@@ -117,7 +118,6 @@ public class Personaje extends Thread{
 		
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 		g.setColor(Color.white);
-		
         g.setFont(new Font("Times New Roman", Font.BOLD, 15));
         g.drawString("Vida:"+this.vida+"",5, 20);
 		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
@@ -126,18 +126,22 @@ public class Personaje extends Thread{
 	
 
 	public void moverDerecha() {
+		if (this.posX<760) 
 		this.posX+=getVelocidad()*getDireccion();
 	}
 	
 	public void moverIzquierda() {
+if (this.posX>0) 
 		this.posX-=getVelocidad()*getDireccion();
 	}
 	
 	public void moverArriba() {
+		if (this.posY>0) 
 		this.posY-=getVelocidad()*getDireccion();
 	}
 	
 	public void moverAbajo() {
+		if (this.posY<560) 
 		this.posY+=getVelocidad()*getDireccion();
 	}
 
@@ -165,11 +169,11 @@ public class Personaje extends Thread{
 		this.vida = vida;
 	}
 
-	public int getVelocidad() {
+	public double getVelocidad() {
 		return velocidad;
 	}
 
-	public void setVelocidad(int velocidad) {
+	public void setVelocidad(Double velocidad) {
 		this.velocidad = velocidad;
 	}
 
@@ -224,24 +228,33 @@ public class Personaje extends Thread{
 	@Override
 	public void run() {
 		while (true) {
+			try {
+				Thread.sleep(600);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
 			if (isColisionZika()) {
+				
 				try {
-				
-					this.thread.sleep(60);
 					setColisionZika(false);
-				
-					setVelocidad(6);
-					
+					Thread.sleep(20000);
+					setVelocidad(8.0);
+		
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 							}
 			
-			
-			if (colisionChinkunguya) {
+	
+			if (isColisionChinkunguya()) {
+				setColisionChinkunguya(false);
 				try {
-					this.thread.sleep(2000);
+					
+					Thread.sleep(10000);
+					setDireccion(1);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

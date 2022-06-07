@@ -20,17 +20,11 @@ public class Chikungunya extends Mosquito {
 		@Override
 		void efecto(Personaje personaje) {
 		if (isHembra()) {
-			if (getContador()<20) {
-				//this.thread.st
 			personaje.setDireccion(-1);
-			}else {
-				setContador(0);
-				personaje.setDireccion(1);
-			
 			}
 		}
 			
-		}
+		
 
 
  
@@ -38,6 +32,7 @@ public class Chikungunya extends Mosquito {
 	void danio( Personaje personaje) {
 		
 			if (isHembra()) {
+				personaje.setColisionChinkunguya(true);
 				personaje.setVida(personaje.getVida()-10);
 				
 			} 

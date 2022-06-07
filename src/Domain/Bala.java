@@ -62,37 +62,25 @@ public class Bala {
 		//System.out.println(criadero.getPosX()+","+criadero.getPosY()+"Criadero");}
 		//&&(X>criadero.getPosX()&&X<criadero.getPosX()+20)
 		if ((Y>criadero.getPosY()&&Y<criadero.getPosY()+40)) {
-			System.out.println(X+","+Y);
-			System.out.println(criadero.getPosX()+","+criadero.getPosY()+"Criadero");
+			//System.out.println(X+","+Y);
+			//System.out.println(criadero.getPosX()+","+criadero.getPosY()+"Criadero");
 			Y=0;
-			System.out.println("entra");
+			//System.out.println("entra");
 		}
 	}
 	
 	public void mover() {
 		
 		
-//		double hipotenusa=0;
-//		hipotenusa=Math.sqrt(Math.pow((finalX - inicioX), 2) + Math.pow((this.finalY - this.inicioX), 2));
-//			this.inicioY = ((( this.finalX - this.inicioX)*this.inicioY)/hipotenusa)+ velocidadDesplasamiento ;
-//
-//		
-//		if (this.inicioX >= this.finalX) {
-//			this.inicioX -= this.velocidadDesplasamiento;
-//     		this.finalY -= this.velocidadDesplasamiento;
-//		}
-//
-//		if (this.inicioX <= this.finalX) {
-//			this.inicioX += this.velocidadDesplasamiento;
-//     		this.finalY += this.velocidadDesplasamiento;
-//		}
-//
-//		
-		this.inicioY = pendiente * this.inicioX + recta;
+
+		//this.inicioY = pendiente * this.inicioX + recta;
 		// a la y le voy tirando la x y se calcula y ecuacon de la recta
 		
 		this.inicioY = pendiente * this.inicioX + recta;
-		
+
+		if (pendiente<-4||pendiente<0) {
+			
+		}
 		
 		if (this.inicioX >= this.finalX) {
 			this.inicioX -= this.velocidadDesplasamiento;
@@ -113,21 +101,71 @@ public class Bala {
 		g.drawImage(this.imagen, (int) this.inicioX, (int) this.inicioY, null);
 
 	}
-	public double getPosX() {
+
+	public double getInicioX() {
 		return inicioX;
 	}
 
-	public void setPosX(double posX) {
-		this.inicioX = posX;
+	public void setInicioX(double inicioX) {
+		this.inicioX = inicioX;
 	}
 
-	public double getPosY() {
+	public double getInicioY() {
 		return inicioY;
 	}
 
-	public void setPosY(double posY) {
-		this.inicioY = posY;
+	public void setInicioY(double inicioY) {
+		this.inicioY = inicioY;
 	}
+
+	public double getFinalX() {
+		return finalX;
+	}
+
+	public void setFinalX(double finalX) {
+		this.finalX = finalX;
+	}
+
+	public double getFinalY() {
+		return finalY;
+	}
+
+	public void setFinalY(double finalY) {
+		this.finalY = finalY;
+	}
+
+	public double getPendiente() {
+		return pendiente;
+	}
+
+	public void setPendiente(double pendiente) {
+		this.pendiente = pendiente;
+	}
+
+	public double getRecta() {
+		return recta;
+	}
+
+	public void setRecta(double recta) {
+		this.recta = recta;
+	}
+
+	public double getVelocidadDesplasamiento() {
+		return velocidadDesplasamiento;
+	}
+
+	public void setVelocidadDesplasamiento(double velocidadDesplasamiento) {
+		this.velocidadDesplasamiento = velocidadDesplasamiento;
+	}
+
+	public double getRango() {
+		return rango;
+	}
+
+	public void setRango(double rango) {
+		this.rango = rango;
+	}
+
 	
 	
 }//fin class

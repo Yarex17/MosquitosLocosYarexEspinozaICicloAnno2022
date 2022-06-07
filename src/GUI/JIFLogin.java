@@ -30,12 +30,12 @@ public class JIFLogin extends JPanel implements ActionListener {
 	private JTable jtbJugadores;
 	private DefaultTableModel dtmJugadores;
 	private JFrame jFrame;
-
-	public JIFLogin(JFrame jFrame) {
-		this.jFrame = jFrame;
+	private 	JPAeaDeJuego jpAeaDeJuego; 
+	public JIFLogin() {
+		
 		this.setLayout(null);
-		this.setBounds(0, -50, 800, 600);
-				this.setBorder(null);
+		this.setBounds(0, 0, 800, 600);
+	    this.setBorder(null);
 
 		init();
 
@@ -77,6 +77,9 @@ public class JIFLogin extends JPanel implements ActionListener {
 		JScrollPane jscrollPane = new JScrollPane(this.jtbJugadores);
 		jscrollPane.setBounds(250, 250, 270, 250);
 		this.add(jscrollPane);
+		
+		this.jpAeaDeJuego=new JPAeaDeJuego();
+		//this.add(jpAeaDeJuego);
 	}
 
 	@Override

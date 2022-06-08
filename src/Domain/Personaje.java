@@ -11,52 +11,51 @@ import javax.imageio.ImageIO;
 import Domain.Criadero.Criadero;
 import Domain.Enemigo.Mosquito;
 
-public class Personaje extends Thread{
+public class Personaje extends Thread {
 
 	private double posX;
 	private double posY;
 	private int vida;
-	private int puntos;
+	private int punto;
 	private int direccion;
 	private int cantidaBalas;
 	private double rango;
 	private BufferedImage imagen;
 	private double velocidad;
-	
+
 	private boolean colisionZika;
 	private boolean colisionChinkunguya;
-	
+
 	private int picaduraDegue;
 	private int picadurazika;
-	
+
 	private Thread thread;
-	
-	
+
 	public Personaje(double posX, double posY) {
-	
-		this.colisionChinkunguya=false;
-		this.colisionZika=false;
-		this.picaduraDegue=0;
-		 this.picadurazika=0;
-		this.direccion=1;
-		this.velocidad=8.0;
-		this.posX=posX;
-		this.posY=posY;
-		this.vida=100;
-		this.cantidaBalas=10000;
-		this.rango=20000.00;
-		try { 
-			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
-			
-			//https://www.flaticon.es/icono-premium/exterminador_4295657?term=exterminador&page=1&position=12&page=1&position=12&related_id=4295657&origin=search		
+
+		this.colisionChinkunguya = false;
+		this.colisionZika = false;
+		this.picaduraDegue = 0;
+		this.picadurazika = 0;
+		this.direccion = 1;
+		this.velocidad = 8.0;
+		this.posX = posX;
+		this.posY = posY;
+		this.vida = 100;
+		this.cantidaBalas = 10;
+		this.rango = 20000.00;
+		try {
+			this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));
+
+			// https://www.flaticon.es/icono-premium/exterminador_4295657?term=exterminador&page=1&position=12&page=1&position=12&related_id=4295657&origin=search
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.thread=new Thread(this);
+		this.thread = new Thread(this);
 		this.thread.start();
-	} // constructor	
-	
+	} // constructor
+
 	public int getCantidaBalas() {
 		return cantidaBalas;
 	}
@@ -73,14 +72,16 @@ public class Personaje extends Thread{
 		this.rango = rango;
 	}
 
-	public Bala disparar(int posX,int posY) {
-		if(this.cantidaBalas>0) {
-			this.cantidaBalas=this.cantidaBalas-1;
-			return new Bala(this.posX+15, this.posY+15,posX,posY);
+	public Bala disparar(int posX, int posY) {
+		if (this.cantidaBalas > 0) {
+
+			this.cantidaBalas = this.cantidaBalas - 1;
+			return new Bala(this.posX + 15, this.posY + 15, posX, posY);
 		}
 		return null;
 	}
-	public boolean colision(Cargador cargador){
+
+	public boolean colision(Cargador cargador) {
 		if (((this.posX < cargador.getPosX() + 40 && this.posX >= cargador.getPosX())
 				|| (this.posX + 40 > cargador.getPosX() && this.posX <= cargador.getPosX()))
 				&& (this.posY < cargador.getPosY() + 40 && this.posY >= cargador.getPosY()
@@ -92,57 +93,58 @@ public class Personaje extends Thread{
 		}
 	}
 
-	public boolean Rango(Mosquito mosquito) {//Calcula si un mosquito esta dentro del rango de disparo 
-		double rango=((mosquito.getPosX()-this.posX)*(mosquito.getPosX()-this.posX)) 
-				+ ((mosquito.getPosY()-this.posY)*(mosquito.getPosY()-this.posY)) ;
-		if (rango<=this.rango) {
-			
+	public boolean Rango(Mosquito mosquito) {// Calcula si un mosquito esta dentro del rango de disparo
+		double rango = ((mosquito.getPosX() - this.posX) * (mosquito.getPosX() - this.posX))
+				+ ((mosquito.getPosY() - this.posY) * (mosquito.getPosY() - this.posY));
+		if (rango <= this.rango) {
+
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
-	public boolean Rango(Criadero criadero) {//Calcula si un criadero esta dentro del rango de disparo 
-		double rango=((criadero.getPosX()-this.posX)*(criadero.getPosX()-this.posX)) 
-				+ ((criadero.getPosY()-this.posY)*(criadero.getPosY()-this.posY)) ;
-		if (rango<=this.rango) {
-			
+
+	public boolean Rango(Criadero criadero) {// Calcula si un criadero esta dentro del rango de disparo
+		double rango = ((criadero.getPosX() - this.posX) * (criadero.getPosX() - this.posX))
+				+ ((criadero.getPosY() - this.posY) * (criadero.getPosY() - this.posY));
+		if (rango <= this.rango) {
+
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
+
 	public void dibujar(Graphics g) {
-		
+
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
 		g.setColor(Color.white);
-        g.setFont(new Font("Times New Roman", Font.BOLD, 15));
-        g.drawString("Vida:"+this.vida+"",5, 20);
-		g.drawString("Balas :"+this.cantidaBalas+"",5, 40);
-		g.drawString("Puntos :"+getPuntos()+"",5, 60);
+		g.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		g.drawString("Vida:" + this.vida + "", 5, 20);
+		g.drawString("Balas :" + this.cantidaBalas + "", 5, 40);
+		g.drawString("Puntos :" + getPunto() + "", 5, 60);
 	} // dibujar
-	
 
 	public void moverDerecha() {
-		if (this.posX<760) 
-		this.posX+=getVelocidad()*getDireccion();
+		if (this.posX < 760)
+			this.posX += getVelocidad() * getDireccion();
 	}
-	
+
 	public void moverIzquierda() {
-if (this.posX>0) 
-		this.posX-=getVelocidad()*getDireccion();
+		if (this.posX > 0)
+			this.posX -= getVelocidad() * getDireccion();
 	}
-	
+
 	public void moverArriba() {
-		if (this.posY>0) 
-		this.posY-=getVelocidad()*getDireccion();
+		if (this.posY > 0)
+			this.posY -= getVelocidad() * getDireccion();
 	}
-	
+
 	public void moverAbajo() {
-		if (this.posY<560) 
-		this.posY+=getVelocidad()*getDireccion();
+		if (this.posY < 560)
+			this.posY += getVelocidad() * getDireccion();
 	}
 
 	public double getPosX() {
@@ -164,7 +166,7 @@ if (this.posX>0)
 	public int getVida() {
 		return vida;
 	}
- 
+
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
@@ -177,12 +179,12 @@ if (this.posX>0)
 		this.velocidad = velocidad;
 	}
 
-	public int getPuntos() {
-		return puntos;
+	public int getPunto() {
+		return punto;
 	}
 
-	public void setPuntos(int puntos) {
-		this.puntos = puntos;
+	public void setPunto(int punto) {
+		this.punto = punto;
 	}
 
 	public int getDireccion() {
@@ -236,23 +238,22 @@ if (this.posX>0)
 			}
 
 			if (isColisionZika()) {
-				
+
 				try {
 					setColisionZika(false);
 					Thread.sleep(20000);
 					setVelocidad(8.0);
-		
+
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-							}
-			
-	
+			}
+
 			if (isColisionChinkunguya()) {
 				setColisionChinkunguya(false);
 				try {
-					
+
 					Thread.sleep(10000);
 					setDireccion(1);
 				} catch (InterruptedException e) {
@@ -261,7 +262,6 @@ if (this.posX>0)
 				}
 			}
 		}
-		
+
 	}
 } // fin clase
-

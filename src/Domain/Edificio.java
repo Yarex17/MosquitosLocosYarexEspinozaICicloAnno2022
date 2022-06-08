@@ -25,9 +25,8 @@ public class Edificio {
 	private int nivel;
 	private Personaje personaje;
 
-
 	public Edificio(double posXPuerta, double posYPuerta, int nivel, Personaje personaje) {
-	
+
 		this.nivel = nivel;
 		this.personaje = personaje;
 
@@ -72,24 +71,24 @@ public class Edificio {
 				setEntra(false);
 				setPosXPuerta(getPosAntX());
 				setPosYPuerta(getPosAntY());
-				if (getPosYPuerta()<getPosYPuerta()+50) {
-					personaje.setPosX(getPosXPuerta()+50);
-					personaje.setPosY(getPosYPuerta()-50);
-				}else {
-					personaje.setPosX(getPosXPuerta()+50);
-					personaje.setPosY(getPosYPuerta()+50);
+				if (getPosYPuerta() < getPosYPuerta() + 50) {
+					personaje.setPosX(getPosXPuerta() + 50);
+					personaje.setPosY(getPosYPuerta() - 50);
+				} else {
+					personaje.setPosX(getPosXPuerta() + 50);
+					personaje.setPosY(getPosYPuerta() + 50);
 				}
-				
+
 			}
 
 		}
 	}
 
 	public void actualizar() {
-		
+
 		if (isEntra()) {
-			generarMosquito(); 
-			
+			generarMosquito();
+
 			for (int i = 0; i < this.mosquitos.size(); i++) {
 				this.mosquitos.get(i).movimiento();
 				this.mosquitos.get(i).colision(personaje);
@@ -97,7 +96,7 @@ public class Edificio {
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
-					
+
 					this.cargadores.remove(i);
 				}
 
@@ -109,13 +108,13 @@ public class Edificio {
 				}
 
 			}
-			//elimina balas cuando colisiona con un mosquito
+			// elimina balas cuando colisiona con un mosquito
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
 				for (int i = 0; i < this.mosquitos.size(); i++) {
 					if (this.balas.get(j).colision(this.mosquitos.get(i))) {
 						this.balas.remove(j);
-						personaje.setPuntos(personaje.getPuntos()+this.mosquitos.get(i).getValor());
+						personaje.setPunto(personaje.getPunto() + this.mosquitos.get(i).getValor());
 						this.mosquitos.remove(i);
 						return;
 					}
@@ -123,17 +122,17 @@ public class Edificio {
 				}
 
 			}
-			//elimina balas cuando colisiona con un criadero
+			// elimina balas cuando colisiona con un criadero
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
 				for (int i = 0; i < this.criaderos.size(); i++) {
-					if (this.balas.get(j).colision(this.criaderos.get(i))) { 
+					if (this.balas.get(j).colision(this.criaderos.get(i))) {
 						this.balas.remove(j);
-						personaje.setPuntos(personaje.getPuntos()+this.criaderos.get(i).getValor());
+						personaje.setPunto(personaje.getPunto() + this.criaderos.get(i).getValor());
 						this.criaderos.remove(i);
 						return;
 					}
- 
+
 				}
 
 			}
@@ -142,7 +141,7 @@ public class Edificio {
 	}
 
 	public void disparar(int posX, int posY) {
-		//agrega balas cuando el mosquito esta dentro del rango con un mosquito
+		// agrega balas cuando el mosquito esta dentro del rango con un mosquito
 		for (int i = 0; i < this.criaderos.size(); i++) {
 			if (this.personaje.Rango(this.criaderos.get(i))) {
 				Bala bala = this.personaje.disparar(posX, posY);
@@ -180,7 +179,7 @@ public class Edificio {
 
 	public void dibujar(Graphics g) {
 		if (isEntra()) {
-			
+
 			g.drawImage(this.habitacion, (int) this.posX, (int) this.posY, null);
 
 			for (int i = 0; i < criaderos.size(); i++) {

@@ -24,9 +24,10 @@ public class Cuadra {
 	private ArrayList<Cargador> cargadores;
 	private Personaje personaje;
 	protected BufferedImage imagen;
-private Cuadra cuadra;
+	private Cuadra cuadra;
+
 	public Cuadra(int nivel, Personaje personaje) {
-		
+
 		this.personaje = personaje;
 		this.nivel = nivel;
 		this.posY = 0;
@@ -38,17 +39,17 @@ private Cuadra cuadra;
 		this.balas = new ArrayList<Bala>();
 		this.cargadores = new ArrayList<Cargador>();
 		generarCriadero();
-    
+
 		try {
 			switch (this.nivel) {
 			case 1:
-				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nvel1.png"));
+				this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/nvel1.png"));
 				break;
 			case 2:
-				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
+				this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/nivel2.png"));
 				break;
 			case 3:
-				this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/nivel3.png"));
+				this.imagen = ImageIO.read(getClass().getResourceAsStream("/Assets/nivel3.png"));
 				break;
 
 			default:
@@ -69,7 +70,7 @@ private Cuadra cuadra;
 		for (int i = 0; i < 3 * this.nivel; i++) {
 			this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random() * 3 + 1)));
 		}
-	} 
+	}
 
 	public void actualizar() {
 
@@ -91,36 +92,36 @@ private Cuadra cuadra;
 				this.mosquitos.get(i).movimiento();
 				this.mosquitos.get(i).colision(personaje);
 			}
-			
+
 			for (int i = 0; i < this.cargadores.size(); i++) {
 
 				if (this.personaje.colision(this.cargadores.get(i))) {
-					
+
 					for (int j = 0; j < this.edificio1.getCargadores().size(); j++) {
 						this.edificio1.getCargadores().remove(j);
 					}
 					for (int j = 0; j < this.edificio2.getCargadores().size(); j++) {
 						this.edificio2.getCargadores().remove(j);
 					}
-				
-					
+
 					this.cargadores.remove(i);
 				}
 
 			}
-		
+
 			if (this.personaje.getCantidaBalas() <= 4) {
-				if (this.cargadores.size() ==0) {
+				if (this.cargadores.size() == 0) {
 					this.cargadores.add(new Cargador());
-					
+
 				}
 
 			}
 
 			for (int j = 0; j < this.balas.size(); j++) {
 				this.balas.get(j).mover();
-				
-				if (this.balas.get(j).getInicioY()==0||this.balas.get(j).getInicioY()==600||this.balas.get(j).getInicioX()==0||this.balas.get(j).getInicioX()==700) {
+
+				if (this.balas.get(j).getInicioY() == 0 || this.balas.get(j).getInicioY() == 600
+						|| this.balas.get(j).getInicioX() == 0 || this.balas.get(j).getInicioX() == 700) {
 					this.balas.remove(j);
 				}
 				for (int i = 0; i < this.criaderos.size(); i++) {
@@ -129,7 +130,7 @@ private Cuadra cuadra;
 				for (int i = 0; i < this.mosquitos.size(); i++) {
 					if (this.balas.get(j).colision(this.mosquitos.get(i))) {// falta colocar rango pero hagamos pruebas
 						this.balas.remove(j);
-						personaje.setPuntos(personaje.getPuntos()+this.mosquitos.get(i).getValor());
+						personaje.setPunto(personaje.getPunto() + this.mosquitos.get(i).getValor());
 						this.mosquitos.remove(i);
 						return;
 					}
@@ -143,9 +144,9 @@ private Cuadra cuadra;
 				for (int i = 0; i < this.criaderos.size(); i++) {
 					if (this.balas.get(j).colision(this.criaderos.get(i))) {// falta colocar rango pero hagamos pruebas
 						this.balas.remove(j);
-						personaje.setPuntos(personaje.getPuntos()+this.criaderos.get(i).getValor());
+						personaje.setPunto(personaje.getPunto() + this.criaderos.get(i).getValor());
 						this.criaderos.remove(i);
-						
+
 						return;
 					}
 
@@ -189,8 +190,6 @@ private Cuadra cuadra;
 	public void dibujar(Graphics g) {
 
 		g.drawImage(this.imagen, (int) this.posX, (int) this.posY, null);
-
-
 
 		if (this.edificio1.isEntra()) {
 			this.edificio1.dibujar(g);
@@ -269,6 +268,5 @@ private Cuadra cuadra;
 	public void setCargadores(ArrayList<Cargador> cargadores) {
 		this.cargadores = cargadores;
 	}
-	
 
 }

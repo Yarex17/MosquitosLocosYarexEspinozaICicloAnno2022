@@ -8,17 +8,31 @@ import Domain.Usuario;
 
 public class JugadorBusiness {
 	private JugadorData jugadorData;
-public JugadorBusiness() {
-	this.jugadorData=new JugadorData();
-}
-public void  guardarJugador(Usuario usuario)throws ClassNotFoundException, IOException{
-	if (usuario!=null) {
-		this.jugadorData.guardarJugador(usuario);
-	}else {
-		throw new IOException("Objeto no existen");	}
-	
-}
-public List<Usuario> obtenerJugador()throws ClassNotFoundException, IOException{
-	return this.jugadorData.obtenerJugadores();
-}
+
+	public JugadorBusiness() {
+		this.jugadorData = new JugadorData();
+	}
+
+	public void actualizarUsuario(Usuario usuario) throws ClassNotFoundException, IOException {
+		if (usuario != null) {
+			this.jugadorData.actualizarUsuario(usuario);
+		} else {
+			throw new IOException("Objeto no existen");
+		}
+
+	}
+
+	public void guardarJugador(Usuario usuario) throws ClassNotFoundException, IOException {
+		if (usuario != null) {
+			this.jugadorData.guardarJugador(usuario);
+		} else {
+			throw new IOException("Objeto no existen");
+		}
+
+	}
+
+	public List<Usuario> obtenerJugador() throws ClassNotFoundException, IOException {
+		return this.jugadorData.obtenerJugadores();
+	}
+
 }

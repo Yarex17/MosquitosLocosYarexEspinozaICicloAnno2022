@@ -2,26 +2,30 @@ package Domain;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable{
-private String nombre;
-private int puntos;
+public class Usuario implements Serializable {
+	private String nombre;
+	private int punto;
 
-public Usuario(String nombre, int puntos)  {
-	
-	this.nombre = nombre;
-	this.puntos = puntos;
-}
-public String getNombre() {
-	return nombre;
-}
-public void setNombre(String nombre) {
-	this.nombre = nombre;
-}
-public int getPuntos() {
-	return puntos;
-}
-public void setPuntos(int puntos) {
-	this.puntos = puntos;
-}
+	public Usuario(String nombre, int punto) {
+
+		this.nombre = nombre;
+		this.punto = punto;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getPunto() {
+		return punto;
+	}
+
+	public void setPunto(int puntos) {
+		this.punto = puntos;
+	}
 
 }

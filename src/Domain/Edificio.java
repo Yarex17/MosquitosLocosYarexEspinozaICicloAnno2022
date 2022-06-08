@@ -171,7 +171,7 @@ public class Edificio {
 	public void generarCriadero() {
 		for (int i = 0; i < 1 * nivel; i++) {
 
-			criaderos.add(FabricaCriaderos.crearCriaderoInterno((int) (Math.random() * 3 + 1)));
+			criaderos.add(FabricaCriadero.crearCriaderoInterno((int) (Math.random() * 3 + 1)));
 
 		}
 

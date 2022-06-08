@@ -13,8 +13,6 @@ public abstract class Criadero extends Thread {
 	private ArrayList<Huevo> huevos;
 	protected double posX, posY;
 	protected int valor;
-	private int contadorColocadorHuevos;
-	private int cantidadHuevos;
 	protected BufferedImage imagen;
 	private boolean primerMosquito;
 	private Mosquito mosquito;
@@ -60,14 +58,6 @@ public abstract class Criadero extends Thread {
 		}
 	}
 
-	public int getContadorColocacion() {
-		return contadorColocadorHuevos;
-	}
-
-	public void setContadorColocacion(int contadorColocacion) {
-		this.contadorColocadorHuevos = contadorColocacion;
-	}
-
 	public double getPosX() {
 		return posX;
 	}
@@ -92,20 +82,6 @@ public abstract class Criadero extends Thread {
 		this.valor = valor;
 	}
 
-	public int getContadorColocadorHuevos() {
-		return contadorColocadorHuevos;
-	}
 
-	public void setContadorColocadorHuevos(int contadorColocadorHuevos) {
-		this.contadorColocadorHuevos = contadorColocadorHuevos;
-	}
-
-	public int getCantidadHuevos() {
-		return cantidadHuevos;
-	}
-
-	public void setCantidadHuevos(int cantidadHuevos) {
-		this.cantidadHuevos = cantidadHuevos;
-	}
 
 }

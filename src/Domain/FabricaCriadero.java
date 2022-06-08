@@ -8,8 +8,8 @@ import Domain.Criadero.Florero;
 import Domain.Criadero.Llanta;
 import Domain.Criadero.PlatoMaceta;
 
-public class FabricaCriaderos {
-	private FabricaCriaderos() {
+public class FabricaCriadero {
+	private FabricaCriadero() {
 		// TODO Auto-generated constructor stub
 	}
 

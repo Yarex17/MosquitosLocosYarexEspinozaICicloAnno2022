@@ -1,16 +1,9 @@
 package Domain;
-
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-
 import javax.imageio.ImageIO;
-
 import Domain.Criadero.Criadero;
-import Domain.Enemigo.Dengue;
 import Domain.Enemigo.Mosquito;
 
 public class Cuadra {
@@ -68,7 +61,7 @@ public class Cuadra {
 
 	public void generarCriadero() {
 		for (int i = 0; i < 3 * this.nivel; i++) {
-			this.criaderos.add(FabricaCriaderos.crearCriaderoExterno((int) (Math.random() * 3 + 1)));
+			this.criaderos.add(FabricaCriadero.crearCriaderoExterno((int) (Math.random() * 3 + 1)));
 		}
 	}
 

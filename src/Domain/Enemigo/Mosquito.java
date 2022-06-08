@@ -128,7 +128,7 @@ public abstract class Mosquito implements Runnable {
 	}
 
 	public void dibujar(Graphics g) {
-		g.drawString(isHembra() + "", (int) this.posX, (int) this.posY);
+		//g.drawString(isHembra() + "", (int) this.posX, (int) this.posY);
 		g.drawImage(this.imagenMosquito, (int) this.posX, (int) this.posY, null);
 	}
 

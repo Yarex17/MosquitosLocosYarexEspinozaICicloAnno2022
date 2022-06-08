@@ -43,7 +43,7 @@ public class Personaje extends Thread{
 		this.posX=posX;
 		this.posY=posY;
 		this.vida=100;
-		this.cantidaBalas=10;
+		this.cantidaBalas=10000;
 		this.rango=20000.00;
 		try { 
 			this.imagen=ImageIO.read(getClass().getResourceAsStream("/Assets/Exterminador.png"));

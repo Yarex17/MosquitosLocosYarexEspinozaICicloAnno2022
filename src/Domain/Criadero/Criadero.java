@@ -21,11 +21,12 @@ public abstract class Criadero extends Thread {
 	
 	public Criadero() {
 		this.huevos=new ArrayList<Huevo>();
+		
+		this.posX = Math.random()*760;
+		this.posY = Math.random()*560;
 		this.huevos.add(new Huevo(1,tipoMosquito()));
 		this.huevos.add(new Huevo(2,tipoMosquito()));
 		this.huevos.add(new Huevo(3,tipoMosquito()));
-		this.posX = Math.random()*760;
-		this.posY = Math.random()*560;
 
 	}
 

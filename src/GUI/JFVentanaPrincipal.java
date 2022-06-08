@@ -10,22 +10,19 @@ public class JFVentanaPrincipal extends JFrame  {
 
 
 
-	JIFLogin jifLogin ;
+	JFLogin jifLogin ;
+	JPAeaDeJuego jpAeaDeJuego;
 	
-	public JFVentanaPrincipal() {
-		this.setSize(816,639);
+	public JFVentanaPrincipal(String nombre) {
+		this.setSize(816,635);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		this.jifLogin= new JIFLogin();
-		init();
+		this.jpAeaDeJuego=new JPAeaDeJuego(this,nombre);
+		add(this.jpAeaDeJuego);
+		//this.pack();
 		this.setLocationRelativeTo(null);
+		this.setVisible(true);
 	}
-private void init() {
-	//this.add(this.jpAeaDeJuego);
-	this.add(jifLogin);
-	
-	
-}
+
 	
 
 }

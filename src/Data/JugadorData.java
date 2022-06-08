@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import Domain.Jugador;
+import Domain.Usuario;
 
 public class JugadorData {
 	private String ruta;
@@ -18,13 +18,13 @@ public JugadorData() {
 	this.ruta="RankingJudadores.dat";
 
 }
-public void guardarJugador(Jugador jugador) throws ClassNotFoundException, IOException {
+public void guardarJugador(Usuario jugador) throws ClassNotFoundException, IOException {
 	File file=new File(this.ruta);	
-	List<Jugador> jugadores=new ArrayList<Jugador>();
+	List<Usuario> jugadores=new ArrayList<Usuario>();
 	if(file.exists()) {
 		ObjectInputStream input=new ObjectInputStream(new FileInputStream(file));
 		Object aux=input.readObject();
-		jugadores=(List<Jugador>)aux;
+		jugadores=(List<Usuario>)aux;
 		input.close();
 	}
 	jugadores.add(jugador);
@@ -33,13 +33,13 @@ public void guardarJugador(Jugador jugador) throws ClassNotFoundException, IOExc
 	output.close();
 }
 
-public List<Jugador> obtenerJugadores() throws ClassNotFoundException, IOException{
+public List<Usuario> obtenerJugadores() throws ClassNotFoundException, IOException{
 	File file=new File(this.ruta);
-	List<Jugador> jugadores=new ArrayList<Jugador>();
+	List<Usuario> jugadores=new ArrayList<Usuario>();
 	if(file.exists()) {
 		ObjectInputStream input=new ObjectInputStream(new FileInputStream(file));
 		Object aux=input.readObject();
-		jugadores=(List<Jugador>)aux;
+		jugadores=(List<Usuario>)aux;
 		input.close();
 		return jugadores;
 	}

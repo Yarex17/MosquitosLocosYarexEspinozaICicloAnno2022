@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
@@ -29,7 +30,9 @@ private BufferedImage buffer;
 	private Thread thread;
 	private long espera;
 	private boolean inicar;
-public JPAeaDeJuego() {
+	private String nombre;
+	private JFrame jFrame;
+public JPAeaDeJuego(JFrame jFrame,String nombre) {
 	
 	this.setLayout(null);
 	this.setSize(800,600);
@@ -39,6 +42,8 @@ public JPAeaDeJuego() {
 	this.addKeyListener(this);
 	this.addMouseListener(this);
 	this.inicar=false;
+	this.jFrame=jFrame;
+	this.nombre=nombre;
 	this.juego=new Juego();
 	//this.setVisible(true);
 }
@@ -64,7 +69,14 @@ private void init() {
 	this.graphics2d=(Graphics2D)this.buffer.getGraphics();
 } // init
 private void update() {
-	this.juego.actualizar();
+	
+	
+	if (this.juego.isFin()) {
+		this.jFrame.dispose();
+		new JFLogin(this.juego.getPersonaje().getPuntos(),this.nombre);
+	}else {
+		this.juego.actualizar();
+	}
 }
 private void draw() {
 	//sthis.graphics2d.setColor(new Color(39, 177, 30));

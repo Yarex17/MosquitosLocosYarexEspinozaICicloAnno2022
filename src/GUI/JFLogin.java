@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,27 +21,46 @@ import javax.swing.table.DefaultTableModel;
 
 import Business.JugadorBusiness;
 
-import Domain.Jugador;
+import Domain.Usuario;
 
 
-public class JIFLogin extends JPanel implements ActionListener {
+public class JFLogin extends JFrame implements ActionListener {
 	private JTextField jtfNombre;
-	private JLabel jlbNombre, jlbTabla, jlbNombreJuego;
+	private JLabel jlbNombre, jlbTabla, jlbNombreJuego,jlbMensaje;
 	public JButton jbIniciar;
 
 	private JTable jtbJugadores;
 	private DefaultTableModel dtmJugadores;
-	private JFrame jFrame;
-	private 	JPAeaDeJuego jpAeaDeJuego; 
-	public JIFLogin() {
-		
+
+	
+	public JFLogin(int puntos,String nombre) {
 		this.setLayout(null);
-		this.setBounds(0, 0, 800, 600);
-	    this.setBorder(null);
-
-		init();
-
-		cargarTabla();
+		this.setPreferredSize(new Dimension(800, 600));
+		this.setFocusable(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		JugadorBusiness jugadorBusiness = new JugadorBusiness();
+		try {
+			jugadorBusiness.guardarJugador(new Usuario(nombre, puntos));
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	     init();
+        cargarTabla();
+		this.setVisible(true);
+	}
+	
+	
+	public JFLogin( ) {
+		
+        this.setLayout(null);
+		this.setSize(800,600);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	    init();
+        cargarTabla();
 		this.setVisible(true);
 	}
 
@@ -49,6 +70,13 @@ public class JIFLogin extends JPanel implements ActionListener {
 		this.jlbNombre = new JLabel("Nombre Jugador:");
 		this.jlbNombre.setBounds(250, 100, 100, 20);
 		this.add(this.jlbNombre);
+		
+		
+		this.jlbMensaje = new JLabel("Ingrese un nombre de usuario");
+		this.jlbMensaje.setForeground(Color.red);
+		this.jlbMensaje.setBounds(250, 100, 100, 50);
+		this.jlbMensaje.setVisible(false);
+		this.add(this.jlbMensaje);
 
 		this.jlbNombreJuego = new JLabel("Mosquitos Locos");
 		this.jlbNombreJuego.setBounds(250, 20, 300, 75);
@@ -84,33 +112,42 @@ public class JIFLogin extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == this.jbIniciar) {
-//			this.jFrame.getContentPane().remove(this);
-//			//this.jFrame.add(new JPAeaDeJuego());
-//			
-//			this.jFrame.invalidate();
-//			this.jFrame.validate();
-			this.jpAeaDeJuego=new JPAeaDeJuego();
-			this.add(jpAeaDeJuego);
-			System.out.println("entra");
-			this.jpAeaDeJuego.iniciar();
-		}
+			if (this.jtfNombre.getText().trim().isEmpty()) {
+				this.jlbMensaje.setVisible(true);
+			}else {
+				try {
+					JugadorBusiness jugadorBusiness = new JugadorBusiness();
+					jugadorBusiness.guardarJugador(new Usuario(this.jtfNombre.getText(), 0));
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				new JFVentanaPrincipal(this.jtfNombre.getText());
+				this.dispose();
+		
+				
+			}
+			}
+			
 
 	}
 
 	public void cargarTabla() {
 
 		try {
+			System.out.println("entra");
 			JugadorBusiness jugadorBusiness = new JugadorBusiness();
 
 			this.dtmJugadores.addColumn("Nombre");
 			this.dtmJugadores.addColumn("Puntos");
-jugadorBusiness.guardarJugador(new Jugador("Pedro", 100));
-			List<Jugador> jugadores;
+//jugadorBusiness.guardarJugador(new Jugador("Pedro", 100));
+			List<Usuario> jugadores;
 			jugadores = jugadorBusiness.obtenerJugador();
 			for (int i = 0; i < jugadores.size(); i++) {
-				this.dtmJugadores.addRow(new Object[] { jugadores.get(i).getNombre(), jugadores.get(i).getPuntos(),
-
-				});
+				this.dtmJugadores.addRow(new Object[] { jugadores.get(i).getNombre(), jugadores.get(i).getPuntos()});
 			} // for
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

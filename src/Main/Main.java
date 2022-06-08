@@ -1,12 +1,13 @@
 package Main;
 
+import GUI.JFLogin;
 import GUI.JFVentanaPrincipal;
 
 public class Main {
 
 	public static void main(String[] args) {
-		JFVentanaPrincipal jfVentanaPrincipal =new JFVentanaPrincipal();
-		jfVentanaPrincipal.setVisible(true);
+		JFLogin jfLogin =new JFLogin();
+		jfLogin.setVisible(true);
 
 	}
 

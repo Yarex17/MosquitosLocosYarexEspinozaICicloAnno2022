@@ -2,11 +2,11 @@ package Domain;
 
 import java.io.Serializable;
 
-public class Jugador implements Serializable{
+public class Usuario implements Serializable{
 private String nombre;
 private int puntos;
 
-public Jugador(String nombre, int puntos)  {
+public Usuario(String nombre, int puntos)  {
 	
 	this.nombre = nombre;
 	this.puntos = puntos;

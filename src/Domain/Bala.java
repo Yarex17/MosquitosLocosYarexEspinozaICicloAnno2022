@@ -68,9 +68,11 @@ public class Bala {
 	public void mover() {
 
 		this.inicioY = pendiente * this.inicioX + recta;
-
-		if (pendiente < -4 || pendiente < 0) {
-
+System.out.println(pendiente);
+		if ((pendiente > 16 && pendiente < 25)) {
+			this.velocidadDesplasamiento=0.5;
+		}else {
+			this.velocidadDesplasamiento=2;
 		}
 
 		if (this.inicioX >= this.finalX) {

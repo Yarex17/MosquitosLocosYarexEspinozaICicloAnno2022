@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import Domain.Usuario;
@@ -74,6 +76,20 @@ public class JugadorData {
 			ObjectInputStream input = new ObjectInputStream(new FileInputStream(file));
 			Object aux = input.readObject();
 			jugadores = (List<Usuario>) aux;
+
+			for (int i = 0; i < jugadores.size(); i++) {
+				for (int j = 0; j < jugadores.size() - 1; j++) {
+					Usuario usuarioActual = jugadores.get(j);
+					Usuario usuarioSiguiente = jugadores.get(j + 1);
+					if (usuarioActual.getPunto() < usuarioSiguiente.getPunto()) {
+						jugadores.set(j, usuarioSiguiente);
+						jugadores.set(j + 1, usuarioActual);
+						// usuarioSiguiente=jugadores.get(j+1);
+					}
+
+				}
+			}
+
 			input.close();
 			return jugadores;
 		}

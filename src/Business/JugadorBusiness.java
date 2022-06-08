@@ -11,9 +11,9 @@ public class JugadorBusiness {
 public JugadorBusiness() {
 	this.jugadorData=new JugadorData();
 }
-public void  guardarJugador(Usuario jugador) throws ClassNotFoundException, IOException{
-	if (jugador!=null) {
-		this.jugadorData.guardarJugador(jugador);
+public void  guardarJugador(Usuario usuario)throws ClassNotFoundException, IOException{
+	if (usuario!=null) {
+		this.jugadorData.guardarJugador(usuario);
 	}else {
 		throw new IOException("Objeto no existen");	}
 	

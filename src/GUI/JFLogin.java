@@ -143,12 +143,14 @@ public class JFLogin extends JFrame implements ActionListener {
 
 			this.dtmJugadores.addColumn("Nombre");
 			this.dtmJugadores.addColumn("Puntos");
-//jugadorBusiness.guardarJugador(new Jugador("Pedro", 100));
+//jugadorBusiness.guardarJugador(new Usuario("Pedro", 100));
 			List<Usuario> jugadores;
 			jugadores = jugadorBusiness.obtenerJugador();
-			for (int i = 0; i < jugadores.size(); i++) {
-				this.dtmJugadores.addRow(new Object[] { jugadores.get(i).getNombre(), jugadores.get(i).getPuntos()});
-			} // for
+			if (!jugadores.isEmpty()) {
+				for (int i = 0; i < jugadores.size(); i++) {
+					this.dtmJugadores.addRow(new Object[] { jugadores.get(i).getNombre(), jugadores.get(i).getPuntos()});
+				} // for	
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
